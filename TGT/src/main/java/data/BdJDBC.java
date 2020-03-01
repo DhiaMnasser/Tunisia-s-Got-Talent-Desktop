@@ -2,6 +2,10 @@ package data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,16 +18,36 @@ import javax.swing.JOptionPane;
  */
 public class BdJDBC {
     
-    Connection conn=null;
-    public static Connection ConnectDB(){
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/tgt?useSSL=false","root","");
-            JOptionPane.showMessageDialog(null,"Connected to database");
-            return conn;
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null,e);
-            return null;
+    private String driverMySQL = "com.mysql.jdbc.Driver";
+    private String urlMysql= "jdbc:mysql://127.0.0.1:3306/tgt";
+    Connection connection=null;
+    PreparedStatement stm;
+    ResultSet rs;
+    ResultSetMetaData meta;
+    
+    private String loginBD = "root";
+    private String pwdBD= "";
+    
+    public BdJDBC() {
+        super();
+    }
+    
+    public void chargerDriver(){
+        try {
+            Class.forName(driverMySQL);
+            System.out.println("Driver chargé");
+        } catch (ClassNotFoundException ex) {
+            System.err.println("Driver error:" + ex);
+        }
+        
+    }
+    
+    public void connexion(){
+        try {
+            connection= DriverManager.getConnection(urlMysql,loginBD,pwdBD);
+            System.out.println("Connexion reussi " + urlMysql);
+        } catch (SQLException ex) {
+            System.err.println("Erreurr de connexion: "+ ex);
         }
     }
    
