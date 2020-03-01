@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vue;
+package User.view;
 
 /**
- *
  * @author gth
+ * @projet TGT
+ * @create 01/03/20
+ * @modify 01/03/20 18:49
+ * @version 1.0.0
  */
 public class Copyr extends javax.swing.JPanel {
 
@@ -29,7 +32,6 @@ public class Copyr extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel1.setText("Copy Right - 2018-2019- IUC");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
