@@ -1,13 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package beans;
 
 /**
  *
  * @author gth
+ * @projet TGT
+ * @creation 01/03/20
+ * @modify 010/03/20
+ * 
  */
 public class User {
     
