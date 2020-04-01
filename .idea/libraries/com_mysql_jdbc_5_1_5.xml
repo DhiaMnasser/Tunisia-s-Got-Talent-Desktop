@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="com.mysql.jdbc_5.1.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Documents/esprit/BitDev/PI_DEV/sprint2/com.mysql.jdbc_5.1.5.jar/com.mysql.jdbc_5.1.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

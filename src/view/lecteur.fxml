@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1600.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="service.LecteurService">
+   <children>
+      <BorderPane layoutY="-1.0" prefHeight="737.0" prefWidth="1600.0">
+         <bottom>
+            <VBox alignment="CENTER" prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="40.0" prefWidth="809.0" style="-fx-background-color: #2F2B47;">
+                     <children>
+                        <Button fx:id="openButton" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="20.0" prefWidth="20.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="playButton" mnemonicParsing="false" onAction="#playVideo" prefHeight="20.0" prefWidth="20.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="pauseButton" mnemonicParsing="false" onAction="#pauseVideo" prefHeight="20.0" prefWidth="20.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="stopButton" mnemonicParsing="false" onAction="#stopVideo" prefHeight="20.0" prefWidth="20.0">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin></Button>
+                        <Button mnemonicParsing="false" onAction="#slowerVideo" text="&lt;&lt;&lt;" />
+                        <Button mnemonicParsing="false" onAction="#slowVideo" text="&lt;&lt;" />
+                        <Button mnemonicParsing="false" onAction="#fastVideo" text="&gt;&gt;" />
+                        <Button mnemonicParsing="false" onAction="#fasterVideo" text="&gt;&gt;&gt;" />
+                        <Button fx:id="exitButton" mnemonicParsing="false" onAction="#exitVideo" text="exit">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></Button>
+                        <Slider fx:id="slider">
+                           <HBox.margin>
+                              <Insets left="30.0" />
+                           </HBox.margin>
+                        </Slider>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
+         <center>
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MediaView fx:id="mediaView" fitHeight="200.0" fitWidth="200.0" />
+                  <Slider fx:id="seeSlider" StackPane.alignment="BOTTOM_CENTER" />
+               </children>
+            </StackPane>
+         </center>
+         <right>
+            <VBox prefHeight="200.0" prefWidth="390.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="342.0" prefWidth="390.0" style="-fx-border-color: #2F2B47; -fx-border-width: 0.5;">
+                     <children>
+                        <Pane layoutX="14.0" layoutY="14.0" prefHeight="280.0" prefWidth="371.0" style="-fx-border-color: #2F2B47;">
+                           <children>
+                              <TableView fx:id="table" layoutX="2.0" layoutY="4.0" prefHeight="275.0" prefWidth="363.0" style="-fx-background-color: #2F2B47;">
+                                <columns>
+                                    <TableColumn fx:id="id" prefWidth="68.0" text="id" />
+                                  <TableColumn fx:id="titre" prefWidth="179.0" text="Titre" />
+                                  <TableColumn fx:id="auteur" prefWidth="139.0" text="Auteur" />
+                                    <TableColumn fx:id="categorie" prefWidth="141.0" text="catégorie" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                        <Button fx:id="b_look" layoutX="216.0" layoutY="305.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="169.0" style="-fx-background-color: #2F2B47;" text="Regarder" textFill="#f8f7f7" />
+                        <Button fx:id="b_description" layoutX="14.0" layoutY="305.0" mnemonicParsing="false" onAction="#descriptionPublication" prefHeight="31.0" prefWidth="182.0" text="Description" />
+                        <Button fx:id="b_close" layoutX="364.0" layoutY="-9.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: transparent;" text="x" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="350.0" prefWidth="380.0" style="-fx-border-color: #2F2B47; -fx-border-width: 0.5;">
+                     <children>
+                        <Button fx:id="b_voter" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#voteAction" prefHeight="101.0" prefWidth="173.0" style="-fx-background-color: black;" text="voter" textFill="#fcfafa" />
+                        <Button layoutX="213.0" layoutY="14.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="173.0" style="-fx-background-color: #007FFF;" text="Buzzer" />
+                        <Pane layoutX="14.0" layoutY="143.0" prefHeight="152.0" prefWidth="360.0" style="-fx-border-color: black; -fx-border-width: 0.5;">
+                           <children>
+                              <Label fx:id="l_description" alignment="TOP_LEFT" layoutX="2.0" layoutY="4.0" prefHeight="150.0" prefWidth="357.0" textAlignment="CENTER" />
+                           </children></Pane>
+                        <Label layoutX="15.0" layoutY="122.0" text="Description" />
+                        <Label layoutX="15.0" layoutY="312.0" prefHeight="21.0" prefWidth="41.0" text="Vote:" />
+                        <Label layoutX="73.0" layoutY="312.0" prefHeight="21.0" prefWidth="312.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+   </children>
+</Pane>
