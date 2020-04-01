@@ -10,7 +10,7 @@ public class BdJDBC {
 
     private static BdJDBC instance;
     static Connection con = null;
-    private String url = "jdbc:mysql://localhost/tuto";
+    private String url = "jdbc:mysql://localhost/tgt";
     private String driver= "com.mysql.jdbc.Driver";
     private String user = "root";
     private String password = "";
