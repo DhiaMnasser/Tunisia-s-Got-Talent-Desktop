@@ -146,6 +146,28 @@ public class LigneCommandeService implements iLigneCommande{
     }  
     }
 
+    @Override
+    public List<LigneCommande> chercherLigneCommande(String query) throws SQLException {
+     Statement stm = connexion.createStatement();
+        String requete = "select * from `ligne_commande` where ( `nomProduit` like '%"+query+"%' or `quantite` like '%"+query+"%' )";
+        ResultSet rst = stm.executeQuery(requete);
+        List<LigneCommande> LigneCommandes = new ArrayList<>();
+        while (rst.next()) {
+            LigneCommande lc = new LigneCommande();
+            lc.setId(rst.getInt("id"));
+            lc.setId(rst.getInt("idproduit"));
+            lc.setNomProduit(rst.getString("nomProduit"));
+            lc.setQuantite(rst.getInt("quantite"));
+            lc.setIdPanier(rst.getInt("idPanier"));
+
+            LigneCommandes.add(lc);
+        }
+       System.out.println("😃😈 chercher LigneCommandes😈😃"+query);
+
+     return LigneCommandes;    
+    
+    }
+
 
     
 }

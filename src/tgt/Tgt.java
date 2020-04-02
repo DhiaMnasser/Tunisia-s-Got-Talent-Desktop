@@ -57,15 +57,16 @@ public class Tgt {
         lcs.updateLigneCommande(lc1, 3);
         System.out.println(lcs.getAllLigneCommandes());
         System.out.println(lcs.getLigneCommandeById(102));
+        System.out.println(lcs.chercherLigneCommande("tshirt"));
         
     System.out.println("CRUD Commande");
-        System.out.println(c1);
-        cs.addCommande(c1);
-        cs.validerCommande(c1);
-        System.out.println(cs.getAllCommandes());
-        System.out.println(cs.getCommandeById(188));
-        System.out.println(cs.getAllCommandesByUser(12));
-
+//        System.out.println(c1);
+//        cs.addCommande(c1);
+//        cs.validerCommande(c1);
+//        System.out.println(cs.getAllCommandes());
+//        System.out.println(cs.getCommandeById(188));
+//        System.out.println(cs.getAllCommandesByUser(12));
+//          System.out.println(cs.chercherCommande("valide"));
 
     }
     

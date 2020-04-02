@@ -22,5 +22,6 @@ public interface iCommande {
     public List<Commande> getAllCommandes() throws SQLException;
     public List<Commande> getAllCommandesByUser(int idUser) throws SQLException;
     public Commande getCommandeById(int id)throws SQLException;
+     public List<Commande> chercherCommande(String query) throws SQLException;
       
 }

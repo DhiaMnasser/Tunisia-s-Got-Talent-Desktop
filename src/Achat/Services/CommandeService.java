@@ -129,5 +129,10 @@ public class CommandeService implements iCommande{
        
         return c ;    
     }
+
+    @Override
+    public List<Commande> chercherCommande(String query) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
