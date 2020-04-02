@@ -98,7 +98,7 @@ public class EvenementService {
        if (nbrRow != 0 )
        {System.out.println("Evenement trouvé "+"\n"+"Nom : "+rst.getString("nomevent")
        +"   "+"Duree : "+rst.getInt("Duree")+" "+"Jours") ;}
-       else{ System.out.println("evenement non trouvée");
+       else{ System.out.println("Evenement non trouvé");
     }
     }
       void BloquerEvenement(int id) throws SQLException {

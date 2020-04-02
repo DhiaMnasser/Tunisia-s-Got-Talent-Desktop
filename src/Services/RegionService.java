@@ -99,5 +99,15 @@ public class RegionService {
        System.out.println("Nombre total de Régions : " +nbrRow);
     
     }
+      void afficher ()throws SQLException
+      {
+          String req = "select * from region ";
+        Statement stm = connexion.createStatement();
+        ResultSet result =  stm.executeQuery(req);
+      while(result.next()){
+      System.out.println("ID : " +result.getInt(1)+"\n" +"Nom : "+result.getString("Nom")+"\n" +"Nombre de villes : "+ result.getInt("Nb_villes")+"\n"  );
+
+      }
+      }
     
 }

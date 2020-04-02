@@ -27,26 +27,36 @@ public class TGT {
         Region r = new Region("achraf",21);
         RegionService rs = new RegionService();
         EvenementService es = new EvenementService();
-        //es.ajouterEvenement2(e);
-        //es.supprimerEvenement(23);
-        //es.modifierEvenement(24,"Achraf", "aaaa","Tunis","img",10,2);
+       // es.ajouterEvenement2(e);
+       // es.supprimerEvenement(25);
+        //es.modifierEvenement(24,"Modification", "Modification","Tunis","img",10,2);
        // System.out.println(es.getAllEvenements()+"\t");
        // System.out.println("crud region");
+       
+      // System.out.println("\n");
+      // es.rechercheEvenement("Sousse");
+       // es.rechercheEvenement("Youssef");
+       
+       
         //rs.ajouterRegion2(r);
         //rs.supprimerRegion(26);
         //rs.modifierRegion(24,"Zaghouan", 7);
-        /*rs.rechercheRegion("Tunis");
-        System.out.println("\n");
-        es.rechercheEvenement("Sousse");*/
+        //rs.rechercheRegion("Tunis");
         
-        rs.nbRegion();
+        
        
-        es.BloquerEvenement(8);
-        //es.afficher();
-        System.out.println("Evenements Actifs : "+"\n" ) ;
+       // rs.nbRegion();
+       //rs.afficher();
+       
+       // es.BloquerEvenement(10);
+        
+       // es.afficher();
+        
+        
+        /*System.out.println("Evenements Actifs : "+"\n" ) ;
         es.affichereventactif();
         System.out.println("Evenements Terminés : "+"\n" ) ;
-        es.affichereventpassif();
+        es.affichereventpassif();*/
 
         
        // System.out.println(rs.getAllRegions()+"\t");
