@@ -130,6 +130,36 @@ public class CommandeService implements iCommande{
         return c ;    
     }
 
+    
+ @Override    
+ public List<Commande> triByDate(String date) throws SQLException {
+ List<Commande> commandes=new ArrayList<>();
+ Statement stm = connexion.createStatement();
+ String requete = "select * from `commande` ORDER BY date ASC";
+ ResultSet rst = stm.executeQuery(requete);
+
+       
+     while (rst.next()) {
+         
+        Commande c = new Commande();
+            c.setId(rst.getInt("id"));
+            c.setUser_id(rst.getInt("user_id"));
+            c.setDate(rst.getDate("date"));
+            c.setEtat(rst.getBoolean("etat"));
+            c.setIdPanier(rst.getInt("idPanier"));
+            c.setAddress(rst.getString("address"));
+            c.setTel(rst.getString("tel"));
+            
+
+            commandes.add(c);
+        
+        }
+        System.out.println("Afficher Produits :");
+
+
+    return commandes;
+    }   
+    
     @Override
     public List<Commande> chercherCommande(String query) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

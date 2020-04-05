@@ -42,15 +42,6 @@ public class Tgt {
         LigneCommandeService lcs = new LigneCommandeService(); 
         CommandeService cs = new CommandeService();
         
-    System.out.println("CRUD Panier");
-        ps.addPanier(pa);
-//        ps.addPanier2(p);
-        System.out.println(pa);
-        ps.updatePanier(ps.getPanierById(55), (double)12);
-        System.out.println(ps.getAllPaniers());
-        System.out.println(ps.getPanierById(56));
-        ps.changerEtatPanier(ps.getPanierById(109));
-    
     System.out.println("CRUD LigneCommande");
         System.out.println(lc1);
         lcs.addLigneCommande(lc1);
@@ -59,6 +50,16 @@ public class Tgt {
         System.out.println(lcs.getLigneCommandeById(102));
         System.out.println(lcs.chercherLigneCommande("tshirt"));
         
+    System.out.println("CRUD Panier");
+        ps.addPanier(pa);
+//        ps.addPanier2(p);
+        System.out.println(pa);
+        Produit pdt1 = pr.getById(lc1.getIdproduit());
+        ps.updatePanier(ps.getPanierById(55), (double)(lc1.getQuantite()*pdt1.getPrix_Produit()));
+        System.out.println(ps.getAllPaniers());
+        System.out.println(ps.getPanierById(56));
+        ps.changerEtatPanier(ps.getPanierById(109));
+        
     System.out.println("CRUD Commande");
 //        System.out.println(c1);
 //        cs.addCommande(c1);
@@ -66,7 +67,7 @@ public class Tgt {
 //        System.out.println(cs.getAllCommandes());
 //        System.out.println(cs.getCommandeById(188));
 //        System.out.println(cs.getAllCommandesByUser(12));
-//          System.out.println(cs.chercherCommande("valide"));
+//        System.out.println(cs.chercherCommande("valide"));
 
     }
     

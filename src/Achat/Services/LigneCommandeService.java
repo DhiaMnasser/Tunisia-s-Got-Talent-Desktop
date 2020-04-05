@@ -132,6 +132,27 @@ public class LigneCommandeService implements iLigneCommande{
         return lc ;
     
     }
+    
+     public LigneCommande getLigneCommandeByNomProduit(String nomPdt) throws SQLException {
+       LigneCommande lc = null;
+        try{
+          Statement stm = connexion.createStatement();
+          String requete = " SELECT * FROM `ligne_commande` WHERE `nomProduit`= '"+nomPdt+"'" ;
+          ResultSet rst = stm.executeQuery(requete);
+
+            if (rst.next())
+            {
+                lc=new LigneCommande(rst.getInt("id"), rst.getInt("idProduit"),rst.getString("nomProduit"),rst.getInt("quantite"),rst.getInt("idPanier"));
+            }
+                  System.out.println("😃😈 display LigneCommande by nom  😈😃");
+
+       
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return lc ;
+    
+    }
 
     @Override
     public void deleteLigneCommande(int id) throws SQLException {

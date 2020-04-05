@@ -21,6 +21,7 @@ public interface iLigneCommande {
     public void updateLigneCommande(LigneCommande lc,int qte)throws SQLException;
     public List<LigneCommande> getAllLigneCommandes() throws SQLException;
     public LigneCommande getLigneCommandeById(int id)throws SQLException;
+    public LigneCommande getLigneCommandeByNomProduit(String nomPdt) throws SQLException;
     public List<LigneCommande> chercherLigneCommande(String query) throws SQLException;
 
   
