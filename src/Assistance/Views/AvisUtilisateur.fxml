@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="564.0" prefWidth="804.0" style="-fx-background-color: #D3CFCC;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Assistance.Views.AvisUtilisateurController">
+    <stylesheets>
+        <URL value="@avisutilisateur.css" />
+    </stylesheets>
+   <children>
+      <BorderPane layoutX="167.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="0.0" prefWidth="804.0" style="-fx-background-color: #2a2b2e;" BorderPane.alignment="CENTER" />
+         </top>
+         <left>
+            <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #2a2b2e;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../utils/images/final_logo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="-20.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </left>
+         <center>
+            <JFXButton onAction="#SendReview" ripplerFill="#a63446" style="-fx-background-color: #a63446;" text="Send review" textFill="WHITE" BorderPane.alignment="CENTER_LEFT">
+               <font>
+                  <Font name="GeosansLight" size="14.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets left="30.0" top="220.0" />
+               </BorderPane.margin>
+            </JFXButton>
+         </center>
+      </BorderPane>
+      <FontAwesomeIcon fill="#a63446" glyphName="TIMES" layoutX="737.0" layoutY="27.0" onMouseClicked="#Close" size="1.5em" wrappingWidth="12.000000000000057" AnchorPane.rightAnchor="20.0" />
+      <FontAwesomeIcon fill="#a63446" glyphName="MINUS" layoutX="691.0" layoutY="28.0" onMouseClicked="#Min" size="1.4em" AnchorPane.rightAnchor="70.0" />
+      <FontAwesomeIcon fill="#a63446" glyphName="CIRCLE" layoutX="715.0" layoutY="27.0" onMouseClicked="#Max" size="1.3em" wrappingWidth="12.0" AnchorPane.rightAnchor="45.0" />
+      <Text layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Send us a review" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="GeosansLight" size="35.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="textfield" focusColor="#a63446" layoutX="20.0" layoutY="20.0" prefHeight="26.0" prefWidth="238.0" promptText="Write you review here ..." unFocusColor="#a63446" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="120.0">
+         <font>
+            <Font name="GeosansLight" size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXComboBox fx:id="cbox" promptText="Rate us !" AnchorPane.leftAnchor="275.0" AnchorPane.topAnchor="192.0" />
+      <ImageView fitHeight="39.0" fitWidth="39.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="190.0">
+         <image>
+            <Image url="@../utils/images/star.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="email" focusColor="#a63446" prefHeight="26.0" prefWidth="177.0" promptText="E-mail" unFocusColor="#a63446" AnchorPane.leftAnchor="265.0" AnchorPane.topAnchor="265.0">
+         <font>
+            <Font name="GeosansLight" size="20.0" />
+         </font>
+      </JFXTextField>
+      <ImageView fitHeight="17.0" fitWidth="30.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="280.0">
+         <image>
+            <Image url="@../utils/images/email.png" />
+         </image>
+      </ImageView>
+      <JFXToggleButton fx:id="tgl" toggleColor="#a63446" toggleLineColor="#a63446" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="320.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Receive E-mails and promotions :" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="335.0">
+         <font>
+            <Font name="GeosansLight" size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
