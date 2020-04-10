@@ -4,8 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Services/EvenementService.java</file>
-            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Services/RegionService.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Controllers/MainInterface.fxml</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Controllers/AfficherAll.fxml</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Controllers/AjoutController.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Entities/Evenement.java</file>
             <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Services/TGT.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Controllers/MainInterfaceController.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Controllers/AfficherAllController.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Controllers/AffichereventController.java</file>
+            <file>file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/Controllers/Ajout.fxml</file>
         </group>
     </open-files>
 </project-private>

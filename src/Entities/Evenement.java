@@ -14,8 +14,8 @@ import java.util.Date;
 public class Evenement {
      private int id;
     private String Duree, Gagnant ,nomevent , image;
-    private Date Date_d,Date_f;
-    private int MaxParticipants, Etat;
+    private String Date_d,Date_f;
+    private int MaxParticipants, Etat,region_id;
 
 
     
@@ -24,11 +24,25 @@ public class Evenement {
         public Evenement() {
     }
 
-    public Evenement(int id, String Duree, String Gagnant, String nomevent, String image, Date Date_d, Date Date_f, int MaxParticipants, int Etat) {
+    public Evenement(int id, String Duree, String Gagnant, String nomevent, String image, String Date_d, String Date_f, int MaxParticipants, int Etat,int region_id) {
         this.id = id;
         this.Duree = Duree;
         this.Gagnant = Gagnant;
         this.nomevent = nomevent;
+        this.image = image;
+        this.Date_d = Date_d;
+        this.Date_f = Date_f;
+        this.MaxParticipants = MaxParticipants;
+        this.Etat = Etat;
+        this.region_id=region_id;
+    }
+    public Evenement (String nomevent,String Duree, String Gagnant, String image, String Date_d, String Date_f, int MaxParticipants, int Etat)
+    {
+        
+    this.nomevent=nomevent ;
+    this.Duree = Duree;
+        this.Gagnant = Gagnant;
+        
         this.image = image;
         this.Date_d = Date_d;
         this.Date_f = Date_f;
@@ -41,6 +55,14 @@ public class Evenement {
         this.Gagnant = Gagnant;
         this.nomevent=nomevent;
         this.image = image;
+    }
+
+    public int getRegion_id() {
+        return region_id;
+    }
+
+    public void setRegion_id(int region_id) {
+        this.region_id = region_id;
     }
     
     
@@ -87,20 +109,20 @@ public class Evenement {
         this.image = image;
     }
 
-    public Date getDate_d() {
+    public String getDate_d() {
         return Date_d;
     }
 
-    public void setDate_d(Date Date_d) {
-        this.Date_d = Date_d;
+    public String setDate_d(String Date_d) {
+        return this.Date_d = Date_d;
     }
 
-    public Date getDate_f() {
+    public String getDate_f() {
         return Date_f;
     }
 
-    public void setDate_f(Date Date_f) {
-        this.Date_f = Date_f;
+    public String setDate_f(String Date_f) {
+        return this.Date_f = Date_f;
     }
 
     public int getMaxParticipants() {

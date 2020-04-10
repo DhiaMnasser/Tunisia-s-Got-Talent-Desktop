@@ -10,25 +10,75 @@ import Entities.Evenement;
 import Entities.Region;
 import Services.EvenementService;
 import Services.RegionService;
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.paint.Color;
+
 
 /**
  *
  * @author Achraf
  */
-public class TGT {
+public class TGT extends Application{
+    
+        @Override
+    public void start(Stage stage) throws Exception {
+         Parent root = FXMLLoader.load(getClass().getResource("/Controllers/MainInterface.fxml"));
 
+            Scene scene = new Scene(root);
+            stage.setTitle("TGT");
+            stage.setScene(scene);
+            stage.show();
+        
+        /*Button btn = new Button();
+        btn.setText("Say 'Hello World'");
+        
+        btn.setLayoutY(0.5);
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event) {
+                EvenementService es = new EvenementService();
+                try {
+                    es.afficher();
+                } catch (SQLException ex) {
+                    Logger.getLogger(TGT.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        StackPane root = new StackPane();
+        root.getChildren().add(btn);
+        
+        Scene scene = new Scene(root, 200, 200);
+        
+        primaryStage.setTitle("Hello World!");
+        primaryStage.setScene(scene);
+        primaryStage.show();*/
+        }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        Evenement e = new Evenement("Achraf", "Chourabi","Tunis","img");
-        Region r = new Region("achraf",21);
-        RegionService rs = new RegionService();
-        EvenementService es = new EvenementService();
+      
+       // Evenement e = new Evenement("Achraf", "Chourabi","Tunis","img");
+       // Region r = new Region("achraf",21);
+       // RegionService rs = new RegionService();
+      //  EvenementService es = new EvenementService();
        // es.ajouterEvenement2(e);
-       // es.supprimerEvenement(25);
+       // es.supprimerEvenement(26);
         //es.modifierEvenement(24,"Modification", "Modification","Tunis","img",10,2);
        // System.out.println(es.getAllEvenements()+"\t");
        // System.out.println("crud region");
@@ -60,6 +110,7 @@ public class TGT {
 
         
        // System.out.println(rs.getAllRegions()+"\t");
+      launch(args) ;
     }
     
 }
