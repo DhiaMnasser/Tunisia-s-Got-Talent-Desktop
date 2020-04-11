@@ -39,7 +39,14 @@ public class PersonneService {
         return (hashed_password);
     }
 
-   public void ajouterPersonne(Personne p) throws Exception {
+     public void sendCode(Personne p){
+       try {
+           JavaMailUtil.sendMail(p.getEmail(),p.getConfirmation_token());
+       } catch (Exception ex) {
+          
+       }
+     }
+   public void ajouterPersonne(Personne p)  {
   try{      String requete="insert INTO fos_user(id,username,username_canonical,email,email_canonical,enabled,salt,password,last_login,confirmation_token,password_requested_at,roles) values (?,?,?,?,?,?,?,?,?,?,?,?)";
         
            
@@ -56,28 +63,62 @@ public class PersonneService {
              pst.setString(10, p.getConfirmation_token());
              pst.setTimestamp(11, p.getPassword_requested_at());
              pst.setString(12, p.getRoles());
-  JavaMailUtil.sendMail(p.getEmail(),p.getConfirmation_token());
-Scanner sc = new Scanner(System.in);
+  
 
-     String str = sc.nextLine();
-           
            
    
      
-          if(str.equals(p.getConfirmation_token())){
+          
              pst.executeUpdate();
             System.out.println("Insertion réussie");
                   
-          }else{
-              System.out.println("Insertion echoué");
-          }}catch(Exception ex){
+          
+          }catch(Exception ex){
               System.out.println(ex);
           }
      
     }
+       public static boolean checkPassword(String password_plaintext, String stored_hash) {
+        boolean password_verified = false;
 
-public void supprimerPersonne(int id) {
-          String requete="delete from fos_user where id="+id;
+        if (null == stored_hash || !stored_hash.startsWith("$2y$")) {
+            throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
+        }
+
+        password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
+
+        return (password_verified);
+    }
+   public Personne recherche(String username){
+         java.sql.Statement query;
+		Personne user = null;
+              
+		try { connexion=MyDbConnection.getInstance().getConnexion();
+			
+			String sql = "Select * from fos_user u where u.username = '" +username+"'";
+			query = connexion.prepareStatement(sql);
+			java.sql.ResultSet result = query.executeQuery(sql);
+			if(result.next() != false) {
+				user = new Personne(result.getInt("id"),result.getString("username"), result.getString("email"), result.getString("password"));
+                          user.setEnabled(result.getInt("enabled"));
+                          user.setRoles(result.getString("roles"));
+                         
+                               
+                                
+                                
+			}else {
+				user = null;
+			}
+		} catch (SQLException e) {
+                    
+                    System.out.println("username ou mot de passe introuvable");
+		}
+		      
+		return user;
+    }
+
+public void remove(Personne p) {
+          String requete="delete from fos_user where id="+p.getId();
        Statement st;
         try {
             st = connexion.createStatement();
@@ -103,6 +144,33 @@ public void supprimerPersonne(int id) {
                   System.out.println("erreur");
           } 
     }
+  public void modifier(Personne p) {
+          String requette2="update fos_user set username=?,username_canonical=?,email=?,email_canonical=?,enabled=?,salt=?,password=?,last_login=?,confirmation_token=?,password_requested_at=?,roles=? where id="+p.getId();
+     
+         
+              try {  PreparedStatement pst = connexion.prepareStatement(requette2);
+               
+         
+             pst.setString(1, p.getUsername());
+             pst.setString(2, p.getUsername_canonical());
+             pst.setString(3, p.getEmail());
+             pst.setString(4, p.getEmail_canonical());
+             pst.setInt(5, p.getEnabled());
+             pst.setString(6, p.getSalt());
+             pst.setString(7, p.getPassword());
+             pst.setTimestamp(8, p.getLast_login());
+             pst.setString(9, p.getConfirmation_token());
+             pst.setTimestamp(10, p.getPassword_requested_at());
+             pst.setString(11, p.getRoles());
+  
+
+        
+      pst.executeUpdate();
+      System.out.println("modification reussie");
+          } catch (SQLException ex) {
+                  System.out.println("erreur");
+          } 
+    }
  public void modifierMdpPersonne(Personne p,String password) {
           String requette2="update fos_user set password=? where id="+p.getId();
      
@@ -120,24 +188,88 @@ public void supprimerPersonne(int id) {
           } 
     }
 
-     public Personne checkLog(String username, String password) {
+     public String checkLog(String username, String password) {
         java.sql.Statement query;
+        try{ 
+                 Personne user =recherche(username);
+                       if (user.getEnabled()==1){
+                         
+                             
+                                String mdp = user.getPassword();
+                                if(checkPassword(password, mdp)){
+                                System.out.println("connexion réussie");
+                               
+                                return "connexion réussie";
+                                }else{
+                              
+                                return "username ou mot de passe  incorrect";
+                                }
+                                
+                            }else{
+                           return "this account is disabled";
+                       }
+                  
+			}catch(NullPointerException e){
+				
+                                return "username ou mot de passe incorrect";
+			}
+		
+                    
+               
+		      
+	}
+
+      
+      public void promote(String username){
+          Personne p;
+          p=recherche(username);
+          p.setRoles("a:1:{i:0;s:10:\"ROLE_ADMIN\";}");
+          modifier(p);
+      }
+    public List<Personne> getAllPersonnes()  {
+       List<Personne> personnes = new ArrayList<>();
+        try {
+            
+       
+        String req = "select * from fos_user";
+        Statement stm = connexion.createStatement();
+        ResultSet result =  stm.executeQuery(req);
+        
+        while(result.next()){
+            
+            Personne p = new Personne( result.getString("username"), result.getString("email"),result.getString("password"));
+            p.setId(result.getInt("id"));
+            personnes.add(p);
+        }
+        System.out.println("Afficher Personnes :");
+        
+         } catch (Exception e) {
+        }
+        return personnes;
+    }
+    
+  
+public void disable(String username){
+    Personne p ;
+       p=recherche(username);
+    p.disable();
+    modifier(p);
+}
+ public Personne recherche(int id){
+         java.sql.Statement query;
 		Personne user = null;
-		try {
-			connexion = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/tgtof","root","");
-			String sql = "Select * from fos_user u where u.username = '" +username+"'";
+              
+		try { connexion=MyDbConnection.getInstance().getConnexion();
+			
+			String sql = "Select * from fos_user u where u.id = '" +id+"'";
 			query = connexion.prepareStatement(sql);
 			java.sql.ResultSet result = query.executeQuery(sql);
 			if(result.next() != false) {
-				user = new Personne(result.getString("username"), result.getString("email"), result.getString("password"));
-                            System.out.println("mdp    "+result.getString("password"));
+				user = new Personne(result.getInt("id"),result.getString("username"), result.getString("email"), result.getString("password"));
+                          user.setEnabled(result.getInt("enabled"));
+                          user.setRoles(result.getString("roles"));
                          
-                                String mdp = result.getString("password");
-                                if(checkPassword(password, mdp)){
-                                System.out.println("connexion réussie");
-                                }else{
-                                System.out.println("mot de passe incorrect");
-                                } 
+                               
                                 
                                 
 			}else {
@@ -145,36 +277,40 @@ public void supprimerPersonne(int id) {
 			}
 		} catch (SQLException e) {
                     
-                e.printStackTrace();
+                    System.out.println("username ou mot de passe introuvable");
 		}
-		       System.out.println(user);
+		      
 		return user;
-	}
-    public static boolean checkPassword(String password_plaintext, String stored_hash) {
-        boolean password_verified = false;
-
-        if (null == stored_hash || !stored_hash.startsWith("$2y$")) {
-            throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
-        }
-
-        password_verified = BCrypt.checkpw(password_plaintext, stored_hash);
-
-        return (password_verified);
     }
-    public List<Personne> getAllPersonnes() throws SQLException {
-       List<Personne> personnes = new ArrayList<>();
-        
-        String req = "select * from fos_user";
-        Statement stm = connexion.createStatement();
-        ResultSet result =  stm.executeQuery(req);
-        
-        while(result.next()){
-            Personne p = new Personne( result.getString("username"), result.getString("email"),result.getString("password"));
-            personnes.add(p);
-        }
-        System.out.println("Afficher Personnes :");
-        return personnes;
-    }
-  
+ public List<Personne> readPesquisar(String desc) {
+        List<Personne> users = new ArrayList();
 
+        connexion=MyDbConnection.getInstance().getConnexion();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = connexion.prepareStatement("SELECT * FROM fos_user Where username like ?;");
+            stmt.setString(1, "%"+desc+"%");
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Personne p = new Personne();
+
+                p.setId(rs.getInt("id"));
+                p.setUsername(rs.getString("username"));
+                p.setEmail(rs.getString("email"));
+                p.setPassword(rs.getString("password"));
+
+                users.add(p);
+            }
+
+        } catch (SQLException ex) {
+            
+        
+           
+        }
+        return users;
+    }
 }
+

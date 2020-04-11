@@ -23,13 +23,11 @@ public class TGT {
         PersonneService ps = new PersonneService();
         Personne p = new Personne("medg", "mohamed.khrouf4@gmail.com","test");
         
-        System.out.println(ps.getAllPersonnes());
-        
+       
   
         try {
-            ps.ajouterPersonne(p);
-            // ps.supprimerPersonne(p.getId());
-            // ps.modifierPersonne(p.getId(),"medk","test");
+            ps.promote("medk");
+          
         } catch (Exception ex) {
             Logger.getLogger(TGT.class.getName()).log(Level.SEVERE, null, ex);
         }

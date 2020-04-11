@@ -5,6 +5,7 @@
  */
 package Entities;
 
+import Services.PersonneService;
 import TGT.MyDbConnection;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -33,10 +34,13 @@ public class Personne {
      private String roles;
      
 
-    public Personne(String username, String email, String password) throws SQLException {
-           Connection connexion;
+    public Personne(String username, String email, String password)  {
+        try {
+            
+     
+   Connection connexion;
          connexion=MyDbConnection.getInstance().getConnexion();
-        connexion = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/tgtof","root","");
+       
          String req = "select * from fos_user";
         Statement stm = connexion.createStatement();
         ResultSet result =  stm.executeQuery(req);
@@ -61,6 +65,44 @@ public class Personne {
          Timestamp requested = new java.sql.Timestamp(date.getTime());
         this.password_requested_at = requested;
         this.roles = "a:1:{i:0;s:9:\"ROLE_USER\";}";
+           } catch (SQLException e) {
+               System.out.println(e);
+        }
+    }
+    public Personne(int id,String username, String email, String password)  {
+        try {
+            
+     
+   Connection connexion;
+         connexion=MyDbConnection.getInstance().getConnexion();
+       
+         String req = "select * from fos_user";
+        Statement stm = connexion.createStatement();
+        ResultSet result =  stm.executeQuery(req);
+         while(result.next()){
+           this.id = result.getInt("id");
+   }
+         
+       this.id=id ;
+        this.username = username;
+        this.username_canonical = username;
+        this.email = email;
+        this.email_canonical = email;
+        this.enabled = 1;
+        this.Salt = "";
+        this.password = password ;
+       int randomPIN = (int)(Math.random()*9000)+1000;
+       java.util.Date date = new Date();
+        Timestamp last = new java.sql.Timestamp(date.getTime());
+	 
+        this.last_login = last;
+        this.confirmation_token = String.valueOf(randomPIN);
+         Timestamp requested = new java.sql.Timestamp(date.getTime());
+        this.password_requested_at = requested;
+        this.roles = "a:1:{i:0;s:9:\"ROLE_USER\";}";
+           } catch (SQLException e) {
+               System.out.println(e);
+        }
     }
     public Personne() {
        this.id=this.id +1;
@@ -109,9 +151,12 @@ public class Personne {
     public int getEnabled() {
         return enabled;
     }
+    public void setEnabled(int i){
+        this.enabled=i;
+    }
 
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
+    public void disable() {
+        this.enabled = 0;
     }
 
     public String getConfirmation_token() {
@@ -164,7 +209,8 @@ public class Personne {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        PersonneService ps = new PersonneService();
+        this.password = ps.hashPassword(password);
     }
 
     public String getEmail() {
