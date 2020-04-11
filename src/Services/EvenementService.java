@@ -95,16 +95,23 @@ public class EvenementService {
         }
         return Evenements;
     }
-      void rechercheEvenement(String Nom) throws SQLException {
+      public Evenement rechercheEvenement(String Nom) throws SQLException {
         String req = "select * FROM `evenement` where nomevent= '"+Nom+"'";
         Statement pstm = connexion.createStatement();
        ResultSet rst = pstm.executeQuery(req);
+       
        rst.last();
        int nbrRow=rst.getRow();
        if (nbrRow != 0 )
-       {System.out.println("Evenement trouvé "+"\n"+"Nom : "+rst.getString("nomevent")
-       +"   "+"Duree : "+rst.getInt("Duree")+" "+"Jours") ;}
-       else{ System.out.println("Evenement non trouvé");
+       {/*System.out.println("Evenement trouvé "+"\n"+"Nom : "+rst.getString("nomevent")
+       +"   "+"Duree : "+rst.getString("Duree")+" "+"Jours") ;*/
+      // return true ;
+           Evenement e = new Evenement (rst.getString("nomevent"), rst.getString("Duree"),rst.getInt("Etat"));
+           return  e ;
+       }
+       else{ 
+           return null;
+       //return false ;
     }
     }
       public void BloquerEvenement(int id) throws SQLException {

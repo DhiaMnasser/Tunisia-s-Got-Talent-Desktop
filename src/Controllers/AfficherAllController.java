@@ -26,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -38,6 +39,8 @@ import javafx.stage.Stage;
 public class AfficherAllController implements Initializable {
 @FXML
     private Pane firstpane;
+@FXML
+private TextField rechercher ;
     @FXML
     private TableView<Evenement> Evenement;
     
@@ -68,7 +71,10 @@ EvenementService s = new EvenementService () ;
     private Button supprimer;
     @FXML
     private Button bloquer;
-    
+    @FXML
+    private TableColumn<?,?> nomsearch ;
+    @FXML
+    private TableColumn<?,?> etatsearch ;
 
     /**
      * Initializes the controller class.
@@ -117,6 +123,37 @@ EvenementService s = new EvenementService () ;
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(uploadPage, 1024, 768));
         
+    }
+    @FXML
+    public void rechercherevent(ActionEvent event) throws IOException,SQLException{
+      EvenementService s = new EvenementService ();
+      
+     
+      Evenement e = new Evenement () ;
+      e =s.rechercheEvenement(rechercher.getText()) ;
+      if (e!=null)
+      {
+          new Alert(Alert.AlertType.INFORMATION, "Evénement Trouvé !").show();
+          nomsearch.setText(e.getNomevent());
+          etatsearch.setText(String.valueOf(e.getEtat()));
+      }
+      else
+      {
+          nomsearch.setText("No result");
+          etatsearch.setText("No result");
+          new Alert(Alert.AlertType.INFORMATION, "Evénement Introuvable ! :(((").show();
+          
+      }
+      
+        /*if(s.rechercheEvenement(rechercher.getText()) ){
+            
+            new Alert(Alert.AlertType.INFORMATION, "Trouvé !").show();
+            System.out.println(e.getNomevent());
+        }
+        else{
+      
+      new Alert(Alert.AlertType.INFORMATION, "Pas trouvé ! :(((").show();
+        }*/
     }
     @FXML
     private void deleteevent(ActionEvent event) throws SQLException {

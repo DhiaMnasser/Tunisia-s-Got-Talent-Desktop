@@ -88,7 +88,7 @@
             <Pane layoutX="-25.0" layoutY="-178.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
             <Pane layoutX="76.0" layoutY="106.0">
                <children>
-                  <Button mnemonicParsing="false" opacity="0.7" prefHeight="190.0" onAction="#evenement" prefWidth="168.0" styleClass="button2" stylesheets="@C:\Users\Achraf\Desktop\Nouveau dossier\TGT_Java-\src\view\css\fullpackstyling.css" />
+                  <Button mnemonicParsing="false" opacity="0.7" prefHeight="190.0" onAction="#evenement" prefWidth="168.0" styleClass="button2" stylesheets="@css/fullpackstyling.css" />
                   <Circle layoutX="84.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">
@@ -121,7 +121,7 @@
             </Pane>
             <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
                <children>
-                  <Button mnemonicParsing="false" opacity="0.7" onAction="#region" prefHeight="190.0" prefWidth="168.0" styleClass="button2" stylesheets="@../../../../Documents/esprit/BitDev/PI_DEV/sprint2/template/javafx-sample-dashboard-master/src/css/fullpackstyling.css" />
+                  <Button mnemonicParsing="false" opacity="0.7" onAction="#region" prefHeight="190.0" prefWidth="168.0" styleClass="button2" stylesheets="@css/fullpackstyling.css" />
                   <Circle layoutX="84.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">

@@ -80,17 +80,24 @@ public class RegionService {
     }
       
       
-      void rechercheRegion(String Nom) throws SQLException {
+      public Region rechercheRegion(String Nom) throws SQLException {
         String req = "select * FROM `region` where Nom= '"+Nom+"'";
         Statement pstm = connexion.createStatement();
        ResultSet rst = pstm.executeQuery(req);
        rst.last();
        int nbrRow=rst.getRow();
        if (nbrRow != 0 )
-       {System.out.println("region trouvée "+"\n"+"Nom : "+rst.getString("Nom")
-       +"   "+"Nombre de villes : "+rst.getInt("Nb_villes")) ;}
-       else{ System.out.println("region non trouvée");
-    }
+       {
+           Region r = new Region (rst.getString("Nom"),rst.getInt("Nb_villes")) ;
+           return r ;
+           /*System.out.println("region trouvée "+"\n"+"Nom : "+rst.getString("Nom")
+       +"   "+"Nombre de villes : "+rst.getInt("Nb_villes")) ;*/
+       }
+       else
+       {
+           return null ;
+       }
+    
     }
       void nbRegion() throws SQLException {
         String req = "select * FROM `region`";

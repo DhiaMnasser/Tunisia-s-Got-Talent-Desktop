@@ -4,10 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="888.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherAllRController">
+<AnchorPane id="AnchorPane" fx:id="rechercherregion" prefHeight="562.0" prefWidth="888.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AfficherAllRController">
    <children>
       <TableView fx:id="table" layoutX="5.0" layoutY="100.0" prefHeight="200.0" prefWidth="837.0">
         <columns>
@@ -35,6 +36,14 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="modifierRegion" layoutX="670.0" layoutY="18.0" onAction="#modifierRegiontest" mnemonicParsing="false" text="Modification"  />
+      <Button fx:id="modifierRegion" layoutX="670.0" layoutY="18.0" mnemonicParsing="false" onAction="#modifierRegiontest" text="Modification" />
+      <TextField id="rechercherregion" fx:id="rechercherregiontest" layoutX="392.0" layoutY="507.0" promptText="rechercher" />
+      <Button fx:id="searchregion" layoutX="576.0" layoutY="507.0" mnemonicParsing="false" onAction="#rechercherregion" text="Rechercher" />
+      <TableView id="tablesearch" fx:id="tablesearch" layoutX="691.0" layoutY="507.0" prefHeight="25.0" prefWidth="149.0">
+         <columns>
+            <TableColumn id="nomsearchr" fx:id="nomsearchr" prefWidth="75.0" text="Nom" />
+            <TableColumn id="nbvillessearchr" fx:id="nbvillessearchr" prefWidth="75.0" text="NB villes" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

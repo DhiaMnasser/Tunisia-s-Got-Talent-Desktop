@@ -26,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -52,6 +53,12 @@ public class AfficherAllRController implements Initializable {
     private Button supprimer;
     @FXML
     private Button retour;
+    @FXML
+    private TableColumn<?,?> nomsearchr ;
+    @FXML
+    private TableColumn<?,?> nbvillessearchr ;
+    @FXML
+    private TextField rechercherregiontest;
 public ObservableList<Region> data = FXCollections.observableArrayList();
 RegionService s = new RegionService () ;
     /**
@@ -115,6 +122,26 @@ RegionService s = new RegionService () ;
         
        }
     }
+    @FXML
+    public void rechercherregion(ActionEvent event) throws IOException,SQLException{
+      RegionService s = new RegionService ();
+      
+     
+      Region e = new Region () ;
+      e =s.rechercheRegion(rechercherregiontest.getText()) ;
+      if (e!=null)
+      {
+          new Alert(Alert.AlertType.INFORMATION, "Evénement Trouvé !").show();
+          nomsearchr.setText(e.getNom());
+          nbvillessearchr.setText(String.valueOf(e.getNb_villes()));
+      }
+      else
+      {
+          nomsearchr.setText("No result");
+          nbvillessearchr.setText("No result");
+          new Alert(Alert.AlertType.INFORMATION, "Evénement Introuvable ! :(((").show();
+          
+      }}
     @FXML
     private void retourR(ActionEvent event) throws IOException {
         Parent uploadPage= FXMLLoader.load(getClass().getResource("MainInterface.fxml"));

@@ -23,7 +23,12 @@ public class Evenement {
     
         public Evenement() {
     }
-
+public Evenement (String nomevent, String Duree,int etat)
+{
+    this.nomevent=nomevent;
+    this.Duree=Duree;
+    this.Etat=etat;
+}
     public Evenement(int id, String Duree, String Gagnant, String nomevent, String image, String Date_d, String Date_f, int MaxParticipants, int Etat,int region_id) {
         this.id = id;
         this.Duree = Duree;
