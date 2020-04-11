@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Assistance.Views.ReplyController">
+    <stylesheets>
+        <URL value="@reply.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2a2b2e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="Label" layoutX="185.0" layoutY="39.0" prefHeight="60.0" prefWidth="269.0" text="Label" textFill="#a63446">
+               <font>
+                  <Font name="GeosansLight-Oblique" size="24.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="59.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Replying to :">
+               <font>
+                  <Font name="GeosansLight" size="24.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="18.0" fitWidth="25.0" layoutX="29.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../utils/images/email1.png" />
+               </image>
+            </ImageView>
+            <JFXTextArea fx:id="txta" focusColor="#a63446" layoutX="29.0" layoutY="152.0" prefHeight="175.0" prefWidth="536.0" promptText="Write your reply here..." unFocusColor="#8a8989">
+               <font>
+                  <Font name="GeosansLight" size="18.0" />
+               </font>
+            </JFXTextArea>
+            <JFXButton fx:id="Sendbtn" layoutX="493.0" layoutY="343.0" onAction="#Send" prefHeight="33.0" prefWidth="72.0" style="-fx-background-color: #a63446;" text="Send" textFill="WHITE">
+               <font>
+                  <Font name="GeosansLight" size="20.0" />
+               </font>
+            </JFXButton>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6d6d6" height="26.0" layoutY="-1.0" stroke="#d6d6d6" strokeType="INSIDE" width="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <FontAwesomeIcon fx:id="closebutton" fill="#a63446" glyphName="TIMES" layoutX="566.0" layoutY="21.0" onMouseClicked="#Close" size="1.5em" wrappingWidth="12.000000000000057" />
+            <FontAwesomeIcon fx:id="minimizebutton" fill="#a63446" glyphName="MINUS" layoutX="518.0" layoutY="22.0" onMouseClicked="#Min" size="1.4em" />
+            <FontAwesomeIcon fx:id="maximizebutton" fill="#a63446" glyphName="CIRCLE" layoutX="543.0" layoutY="21.0" onMouseClicked="#Max" size="1.3em" wrappingWidth="12.0" />
+            <JFXTextField fx:id="obj" focusColor="#a63446" layoutX="29.0" layoutY="99.0" promptText="Object (Optional)">
+               <font>
+                  <Font name="GeosansLight" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

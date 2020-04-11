@@ -1,7 +1,19 @@
-/*
- * Empty Stylesheet file.
- */
+.table-view {
+-fx-background-color:transparent;
 
-.mainFxmlClass {
-
+.table-view .column-header-background {
+-fx-background-color:transparent;
 }
+
+.table-view column-header, .table-view .filler {
+-fx-background-color:transparent;
+}
+
+.table-view .column-header .nested-column-header
+{
+-fx-background-color: #FFFFFF;
+-fx-background-radius: 10;
+-fx-background-insets: 0;
+-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);
+}
+

@@ -36,6 +36,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -54,6 +56,7 @@ public class AvisUtilisateurController implements Initializable {
     private JFXTextField email;
     @FXML
     private JFXToggleButton tgl;
+    private static final String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
     
     /**
      * Initializes the controller class.
@@ -112,12 +115,24 @@ public class AvisUtilisateurController implements Initializable {
  
         alert.showAndWait();
     }
+   
+    private void wronginputtxt() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Tunisian Got Talents");
+ 
+        // Header Text: null
+        alert.setHeaderText("Fail");
+        alert.setContentText("The review must contain more than 5 caracters!");
+ 
+        alert.showAndWait();
+    }
     
    private boolean emailisvalid (String s)
    {
 
- int v=s.indexOf('@');
- return (v>0);
+  Pattern pattern = Pattern.compile(regex);
+  Matcher matcher = pattern .matcher(s); 
+  return matcher.matches();
 
    }
    
@@ -125,7 +140,7 @@ public class AvisUtilisateurController implements Initializable {
    @FXML
     private void SendReview(ActionEvent event) throws SQLException {
         
-        if (emailisvalid(email.getText()))
+        if (textfield.getText().length()>5 && emailisvalid(email.getText()) )
         {
         
         
@@ -164,7 +179,11 @@ else if (s.equals("**** 4 Stars")) {
         }
         else 
         {
-        wronginput() ;
+        if (textfield.getText().length()<5)
+                
+                 { wronginputtxt() ;}
+        
+                      else {wronginput();}
         }
     }
    
