@@ -32,19 +32,21 @@
         </group>
         <group/>
         <group name="PiDev">
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/TGT/TGT.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Services/CategorieService.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/ProductUserController.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/Store.fxml</file>
             <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Services/ProduitService.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Services/PersonneService.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Services/PhotoService.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Services/CategorieService.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/CategorieAdminController.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/AddCategorieController.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/AddProduct.fxml</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/ProductAdminController.java</file>
             <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Entities/Produit.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Services/IserviceCategorie.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Entities/Photo.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/TGT/ProgrammeTGT.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/TGT/MyDbConnection.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Services/IserviceProduit.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Entities/Personne.java</file>
-            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Entities/Categorie.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/AddProductController.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/CategorieAdmin.fxml</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/AddCategorie.fxml</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/DTGT.java</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/ProductAdmin.fxml</file>
+            <file>file:/C:/Users/Haddad/Documents/NetBeansProjects/TGT/src/Graphique/ProductUser.fxml</file>
         </group>
     </open-files>
 </project-private>

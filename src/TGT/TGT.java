@@ -32,11 +32,11 @@ public class TGT {
         ProduitService pr = new ProduitService();
         CategorieService ca = new CategorieService();
         
-        Produit p1 = new Produit(0, "tshirt4",1, 1, 1, "Dispo", "m","test");
+        Produit p1 = new Produit(0, "tshirt5",1, 1, 1, "Dispo", "m","test");
         
-        Categorie c1 = new Categorie(99, "VIP");
+        Categorie c1 = new Categorie(99, "Test");
         //pr.addProduct(p1);
-        //pr.deleteProduct(33);
+        //pr.deleteProduct(35);
         //pr.updateProduct(p1);
         //ca.addCategorie(c1);
         //ca.deleteCategorie(5);

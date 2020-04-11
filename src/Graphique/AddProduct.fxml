@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="Graphique.AddProductController">
+    <stylesheets>
+        <URL value="@addproduct.css" />
+    </stylesheets>
+    <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/tgta.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="addproduct" layoutX="907.0" layoutY="403.0" mnemonicParsing="false" onAction="#addProduct" text="Add">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <VBox layoutX="515.0" layoutY="216.0" prefHeight="484.0" prefWidth="320.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="TName_Product" promptText="Nom Produit" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="TId_Cat" promptText="Categorie" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="TPrice_Product" promptText="Prix" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="TSize_Product" promptText="Taille" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="TQuantity_Total" promptText="Quantité " />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="TEt" promptText="Etat" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="TUrl" promptText="Url" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Text layoutX="826.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Produit " textAlignment="CENTER" wrappingWidth="226.310546875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button fx:id="back" layoutX="280.0" layoutY="62.0" mnemonicParsing="false" onAction="#back" text="BACK" />
+   </children>
+</AnchorPane>

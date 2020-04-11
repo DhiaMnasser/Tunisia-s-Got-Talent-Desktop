@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Graphique.ProductAdminController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/tgta.png" />
+         </image>
+      </ImageView>
+      <BarChart fx:id="Barchart" layoutX="939.0" layoutY="289.0" prefHeight="194.0" prefWidth="279.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <TextField fx:id="search" layoutX="968.0" layoutY="87.0" prefHeight="42.0" prefWidth="298.0" promptText="search" />
+      <Button fx:id="addProduct" layoutX="707.0" layoutY="555.0" mnemonicParsing="false" onAction="#addProduct" text="Add" />
+      <Button fx:id="deleteProduct" layoutX="477.0" layoutY="555.0" mnemonicParsing="false" onAction="#deleteProduct" text="Delete" />
+      <Label layoutX="609.0" layoutY="234.0" text="Produit :" />
+      <TableView fx:id="tableview" layoutX="297.0" layoutY="269.0" prefHeight="252.0" prefWidth="648.0">
+        <columns>
+            <TableColumn fx:id="tcName_Product" onEditCommit="#update_Name" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="tcId_Product" onEditCommit="#update_Id_Product" prefWidth="76.0" text="Id_Product" />
+            <TableColumn fx:id="tcId_Cat" onEditCommit="#update_Id_Cat" prefWidth="71.0" text="Id_Cat" />
+            <TableColumn fx:id="tcQuantity_Total" onEditCommit="#update_Quantity_Total" prefWidth="57.0" text="Quantité" />
+            <TableColumn fx:id="tcPrice_Product" onEditCommit="#update_Price_Product" prefWidth="76.0" text="Prix" />
+            <TableColumn fx:id="tcSize_Product" onEditCommit="#update_Size_Product" prefWidth="67.0" text="Taille" />
+            <TableColumn fx:id="tcEt_Product" minWidth="0.0" onEditCommit="#update_Et" prefWidth="92.0" text="Etat" />
+            <TableColumn fx:id="tcUrl" onEditCommit="#update_Url" prefWidth="171.0" text="Url" />
+        </columns>
+      </TableView>
+      <Button fx:id="cat" layoutX="1042.0" layoutY="589.0" mnemonicParsing="false" onAction="#cat" text="Categories" />
+      <Button fx:id="back" layoutX="280.0" layoutY="62.0" mnemonicParsing="false" onAction="#back" text="BACK" />
+   </children>
+</AnchorPane>
