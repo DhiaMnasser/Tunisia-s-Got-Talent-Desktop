@@ -99,7 +99,7 @@ EvenementService s = new EvenementService () ;
             Evenement.setItems(data);
             System.out.println(data);
         } catch (SQLException ex) {
-            Logger.getLogger(AffichereventController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AfficherAllController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
     @FXML
@@ -108,6 +108,14 @@ EvenementService s = new EvenementService () ;
 
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(uploadPage, 861, 731));
+        
+    }
+    @FXML
+    private void modifierevent(ActionEvent event) throws IOException {
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("Modifier.fxml"));
+
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(uploadPage, 1024, 768));
         
     }
     @FXML

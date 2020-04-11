@@ -17,12 +17,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -43,8 +46,6 @@ public class AjoutController implements Initializable {
     @FXML
     private Button envoyer;
     @FXML
-    private Label l_error;
-    @FXML
     private TextField Duree;
     @FXML
     private TextField Gagnant;
@@ -58,6 +59,30 @@ public class AjoutController implements Initializable {
     private TextField MaxParticipants;
     @FXML
     private ComboBox<?> region_id;
+    @FXML
+    private Button retourevent;
+    @FXML
+    private TableView<?> Evenement;
+    @FXML
+    private TableColumn<?, ?> nomevent1;
+    @FXML
+    private TableColumn<?, ?> Duree1;
+    @FXML
+    private TableColumn<?, ?> id;
+    @FXML
+    private TableColumn<?, ?> Date_d1;
+    @FXML
+    private TableColumn<?, ?> Date_f1;
+    @FXML
+    private TableColumn<?, ?> Gagnant1;
+    @FXML
+    private TableColumn<?, ?> Etat1;
+    @FXML
+    private TableColumn<?, ?> MaxParticipants1;
+    @FXML
+    private TableColumn<?, ?> region_id1;
+    @FXML
+    private TableColumn<?, ?> image1;
 
     /**
      * Initializes the controller class.
@@ -85,7 +110,7 @@ public class AjoutController implements Initializable {
         EvenementService cs = new EvenementService();
         Evenement c = new Evenement (nomevent1,duree1,gagnant1,image1,Date_d1,Date_f1,MaxParticipants1,Etat1);
         cs.ajouterEvenement2(c);
-        System.out.println("cours ajouté"); 
+        System.out.println("Event ajouté"); 
         try {
             javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("AfficherAll.fxml"));
             Scene sceneview = new Scene(tableview);
@@ -129,8 +154,16 @@ private boolean validateInputs() {
             return false;
 
         }
+         return true;
+}
+    @FXML
+    private void retourEA(ActionEvent event) throws IOException {
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("AfficherAll.fxml"));
 
-    
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(uploadPage, 861, 731));
+        
+    }}
         
     
     

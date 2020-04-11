@@ -15,6 +15,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tgt.MyDbConnection;
 
 /**
@@ -36,7 +38,7 @@ public class RegionService {
         stm.executeUpdate(req);
     }
 
-     void ajouterRegion2(Region r) throws SQLException {
+     public void ajouterRegion2(Region r) throws SQLException {
         String req = "INSERT INTO `region` (`Nom`,`Nb_villes`) VALUES ( ?,?) ";
         PreparedStatement pstm = connexion.prepareStatement(req);
         pstm.setString(1, r.getNom());
@@ -45,7 +47,7 @@ public class RegionService {
         pstm.executeUpdate();
     }
     
-      void supprimerRegion(int id) throws SQLException {
+      public void supprimerRegion(int id) throws SQLException {
         String req = "DELETE FROM `region` where id= "+id;
         System.out.println(req);
         Statement pstm = connexion.createStatement();
@@ -54,7 +56,7 @@ public class RegionService {
     }
     
     
-    void modifierRegion(int id, String Nom, int Nb_villes) throws SQLException {
+    public void modifierRegion(int id, String Nom, int Nb_villes) throws SQLException {
         String req = "UPDATE `region` SET  Nom='"+Nom
                                +"', Nb_villes='"+Nb_villes
                                + "' WHERE id="+id;
@@ -109,5 +111,22 @@ public class RegionService {
 
       }
       }
+      public ObservableList<Region> indexActionR() throws SQLException 
+     { 
+        ObservableList<Region> Regions=FXCollections.observableArrayList();
+        String req= "  select * from region";
+        Statement st;
+        
+            st=connexion.createStatement();
+            ResultSet result=st.executeQuery(req);
+            while(result.next())
+            {    Region p = new Region(result.getInt(1),result.getString("Nom"),result.getInt("Nb_villes"));
+            Regions.add(p);
+                    }
+        
+          return  Regions;
+        
+        
+     }
     
 }

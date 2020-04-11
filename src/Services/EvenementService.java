@@ -64,11 +64,13 @@ public class EvenementService {
     }
     
     
-   void modifierEvenement(int id, String Duree, String Gagnant, String nomevent, String image,  int MaxParticipants, int Etat,int region_id) throws SQLException {
+  public void modifierEvenement(int id, String Duree, String Gagnant, String nomevent, String image,String Date_d ,String Date_f, int MaxParticipants, int Etat) throws SQLException {
         String req = "UPDATE `evenement` SET  Duree='"+Duree
                                +"', Gagnant='"+Gagnant
                                +"', nomevent='"+nomevent
                                +"',image='"+image 
+                               +"',Date_d='"+Date_d
+                               +"',Date_f='"+Date_f
                                +"',MaxParticipants='"+MaxParticipants 
                                +"',Etat='"+Etat 
                                

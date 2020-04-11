@@ -30,7 +30,7 @@
          </font>
       </Label>
       <ImageView fx:id="img" fitHeight="93.0" fitWidth="132.0" layoutX="523.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true" />
-      <Button id="envoyer" fx:id="envoyer" onAction="#ajouter" layoutX="433.0" layoutY="642.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="287.0" style="-fx-background-color: #fafafa; -fx-border-color: black;" styleClass="bouton17" text="Envoyer" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="642.0">
+      <Button id="envoyer" fx:id="envoyer" layoutX="433.0" layoutY="602.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="42.0" prefWidth="287.0" style="-fx-background-color: #fafafa; -fx-border-color: black;" styleClass="bouton17" text="Envoyer" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="433.0" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="602.0">
          <font>
             <Font size="12.0" />
          </font>
@@ -59,5 +59,6 @@
       <DatePicker id="Date_f" fx:id="Date_f" layoutX="336.0" layoutY="251.0" promptText="Date de fin" />
       <TextField id="MaxParticipants" fx:id="MaxParticipants" layoutX="336.0" layoutY="395.0" prefHeight="31.0" prefWidth="319.0" promptText="Max participants" />
       <ComboBox id="region_id" fx:id="region_id" layoutX="336.0" layoutY="443.0" prefWidth="150.0" promptText="Région" />
+      <Button fx:id="retourevent" layoutX="318.0" layoutY="660.0" mnemonicParsing="false" onAction="#retourEA" text="Retour aux Evénements" />
    </children>
 </AnchorPane>

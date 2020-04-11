@@ -36,6 +36,18 @@ public class Evenement {
         this.Etat = Etat;
         this.region_id=region_id;
     }
+    public Evenement(int id, String Duree, String Gagnant, String nomevent, String image, String Date_d, String Date_f, int MaxParticipants, int Etat) {
+        this.id = id;
+        this.Duree = Duree;
+        this.Gagnant = Gagnant;
+        this.nomevent = nomevent;
+        this.image = image;
+        this.Date_d = Date_d;
+        this.Date_f = Date_f;
+        this.MaxParticipants = MaxParticipants;
+        this.Etat = Etat;
+        
+    }
     public Evenement (String nomevent,String Duree, String Gagnant, String image, String Date_d, String Date_f, int MaxParticipants, int Etat)
     {
         
@@ -56,6 +68,8 @@ public class Evenement {
         this.nomevent=nomevent;
         this.image = image;
     }
+
+    
 
     public int getRegion_id() {
         return region_id;

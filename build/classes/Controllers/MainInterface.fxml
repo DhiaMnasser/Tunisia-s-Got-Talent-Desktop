@@ -121,7 +121,7 @@
             </Pane>
             <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
                <children>
-                  <Button mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" stylesheets="@../../../../Documents/esprit/BitDev/PI_DEV/sprint2/template/javafx-sample-dashboard-master/src/css/fullpackstyling.css" />
+                  <Button mnemonicParsing="false" opacity="0.7" onAction="#region" prefHeight="190.0" prefWidth="168.0" styleClass="button2" stylesheets="@../../../../Documents/esprit/BitDev/PI_DEV/sprint2/template/javafx-sample-dashboard-master/src/css/fullpackstyling.css" />
                   <Circle layoutX="84.0" layoutY="87.0" radius="50.0" strokeType="INSIDE">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startY="0.4952380952380952">

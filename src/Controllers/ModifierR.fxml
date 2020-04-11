@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMouseClicked="#selectR" prefHeight="747.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ModifierRController">
+   <children>
+      <Pane layoutX="-311.0" prefHeight="747.0" prefWidth="0.0" style="-fx-background-color: #3D4956;" />
+      <Label layoutX="485.0" layoutY="22.0" prefHeight="42.0" prefWidth="305.0" text="Modifier une Région">
+         <font>
+            <Font name="Kristen ITC" size="27.0" />
+         </font>
+      </Label>
+      <TextField id="Nom" fx:id="Nom" layoutX="27.0" layoutY="103.0" prefHeight="31.0" prefWidth="319.0" promptText="Nom Region" />
+      <Label layoutX="744.0" layoutY="709.0" text="\@copyright tgt2020">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Label>
+      <Button id="envoyer" fx:id="modifierregion" layoutX="72.0" layoutY="314.0" mnemonicParsing="false" onAction="#editR" prefHeight="42.0" prefWidth="277.0" style="-fx-background-color: #fafafa; -fx-border-color: black;" styleClass="bouton17" text="Modifier" AnchorPane.bottomAnchor="392.0" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="509.0" AnchorPane.topAnchor="314.0">
+         <font>
+            <Font size="12.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <Blend mode="OVERLAY">
+               <topInput>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        
+                     </light>
+                  </Lighting>
+               </topInput>
+            </Blend>
+         </effect>
+      </Button>
+      <TextField id="Nb_villes" fx:id="Nb_villes" layoutX="27.0" layoutY="156.0" prefHeight="31.0" prefWidth="319.0" promptText="Nombre de villes" />
+      <ComboBox id="event_id" fx:id="event_id" layoutX="27.0" layoutY="209.0" prefWidth="150.0" promptText="Evénement" />
+      <Button fx:id="RetourRegion" layoutX="27.0" layoutY="442.0" mnemonicParsing="false" onAction="#retourRA" text="Retour aux Regions" />
+      <TableView fx:id="table" layoutX="448.0" layoutY="156.0" onMouseClicked="#selectR" prefHeight="200.0" prefWidth="285.0">
+        <columns>
+          <TableColumn id="Nom1" fx:id="Nom1" prefWidth="75.0" text="Nom" />
+          <TableColumn id="Nb_villes2" fx:id="Nb_villes2" prefWidth="75.0" text="Nb_villes2" />
+            <TableColumn id="Event_id1" fx:id="Event_id1" prefWidth="134.0" text="Event_id" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
