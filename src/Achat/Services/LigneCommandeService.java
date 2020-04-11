@@ -41,10 +41,10 @@ public class LigneCommandeService implements iLigneCommande{
 
             stm.executeUpdate(requete);
       
-            System.out.println("😃😈 LigneCommande inserted 😈😃");
+            System.out.println(" LigneCommande inserted ");
         }catch(SQLException e){
             System.out.println(e.getMessage());
-            System.out.println("😃😈 insertion LigneCommande error 1😈😃");
+            System.out.println(" insertion LigneCommande error 1");
 
         }
     }
@@ -66,10 +66,10 @@ public class LigneCommandeService implements iLigneCommande{
             pstm.executeUpdate();
             
 //            stm.executeUpdate(requete);
-       System.out.println("😃😈 LigneCommande inserted 😈😃");
+       System.out.println(" LigneCommande inserted ");
         }catch(SQLException e){
             System.out.println(e.getMessage());
-            System.out.println("😃😈 insertion LigneCommande error 2😈😃");
+            System.out.println(" insertion LigneCommande error 2");
 
         }
     }
@@ -85,10 +85,10 @@ public class LigneCommandeService implements iLigneCommande{
             pst.setDouble(1,qte);
             pst.setInt(2,lc.getId());
             pst.executeUpdate();
-      System.out.println("😃😈 LigneCommande updated  😈😃"); 
+      System.out.println(" LigneCommande updated "); 
       }catch(SQLException e){
             System.out.println(e.getMessage());          
-            System.out.println("😃😈 Update LigneCommande error 😈😃");
+            System.out.println("Update LigneCommande error ");
 
         }
       }
@@ -110,7 +110,7 @@ public class LigneCommandeService implements iLigneCommande{
 
             LigneCommandes.add(lc);
         }
-       System.out.println("😃😈 display  All LigneCommandes😈😃");
+       System.out.println(" display  All LigneCommandes");
 
      return LigneCommandes; 
     }
@@ -126,13 +126,14 @@ public class LigneCommandeService implements iLigneCommande{
             {
                 lc=new LigneCommande(rst.getInt("id"), rst.getInt("idProduit"),rst.getString("nomProduit"),rst.getInt("quantite"),rst.getInt("idPanier"));
             }
-                  System.out.println("😃😈 display LigneCommande by id  😈😃");
+                  System.out.println(" display LigneCommande by id ");
 
        
         return lc ;
     
     }
     
+     @Override
      public LigneCommande getLigneCommandeByNomProduit(String nomPdt) throws SQLException {
        LigneCommande lc = null;
         try{
@@ -142,9 +143,39 @@ public class LigneCommandeService implements iLigneCommande{
 
             if (rst.next())
             {
-                lc=new LigneCommande(rst.getInt("id"), rst.getInt("idProduit"),rst.getString("nomProduit"),rst.getInt("quantite"),rst.getInt("idPanier"));
+                lc=new LigneCommande(rst.getInt("id"),
+                        rst.getInt("idProduit"),
+                        rst.getString("nomProduit"),
+                        rst.getInt("quantite"),
+                        rst.getInt("idPanier"));
             }
-                  System.out.println("😃😈 display LigneCommande by nom  😈😃");
+                  System.out.println(" display LigneCommande by nom ");
+
+       
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return lc ;
+    
+    }
+     
+     @Override
+      public LigneCommande getLigneCommandeByIdProduit(int IdPdt) throws SQLException {
+       LigneCommande lc = null;
+        try{
+          Statement stm = connexion.createStatement();
+          String requete = " SELECT * FROM `ligne_commande` WHERE `idproduit`= '"+IdPdt+"'" ;
+          ResultSet rst = stm.executeQuery(requete);
+
+            if (rst.next())
+            {
+                lc=new LigneCommande(rst.getInt("id"),
+                        rst.getInt("idProduit"),
+                        rst.getString("nomProduit"),
+                        rst.getInt("quantite"),
+                        rst.getInt("idPanier"));
+            }
+                  System.out.println(" display LigneCommande by nom ");
 
        
         }catch(SQLException e){
@@ -163,14 +194,15 @@ public class LigneCommandeService implements iLigneCommande{
         System.out.println("Panier Supprimer");
     }catch(SQLException e){
         System.out.println(e.getMessage());          
-        System.out.println("😃😈 Delete LigneCommande error 😈😃");
+        System.out.println("Delete LigneCommande error");
     }  
     }
 
+    
     @Override
-    public List<LigneCommande> chercherLigneCommande(String query) throws SQLException {
+    public List<LigneCommande> chercherLigneCommande(String query,int idPanier) throws SQLException {
      Statement stm = connexion.createStatement();
-        String requete = "select * from `ligne_commande` where ( `nomProduit` like '%"+query+"%' or `quantite` like '%"+query+"%' )";
+        String requete = "select * from `ligne_commande` where `idPanier`= '"+idPanier+"' and ( `nomProduit` like '%"+query+"%' or `quantite` like '%"+query+"%' )";
         ResultSet rst = stm.executeQuery(requete);
         List<LigneCommande> LigneCommandes = new ArrayList<>();
         while (rst.next()) {
@@ -183,12 +215,56 @@ public class LigneCommandeService implements iLigneCommande{
 
             LigneCommandes.add(lc);
         }
-       System.out.println("😃😈 chercher LigneCommandes😈😃"+query);
+       System.out.println("chercher LigneCommandes "+query);
 
      return LigneCommandes;    
     
     }
 
+    @Override
+    public List<LigneCommande> getLigneCommandesByPanier(int id) throws SQLException {
+      Statement stm = connexion.createStatement();
+        String requete = " SELECT * FROM `ligne_commande` WHERE `idPanier`= '"+id+"'" ;
+        ResultSet rst = stm.executeQuery(requete);
+        List<LigneCommande> LigneCommandes = new ArrayList<>();
+        while (rst.next()) {
+            LigneCommande lc = new LigneCommande();
+            lc.setId(rst.getInt("id"));
+            lc.setIdproduit(rst.getInt("idproduit"));
+            lc.setNomProduit(rst.getString("nomProduit"));
+            lc.setQuantite(rst.getInt("quantite"));
+            lc.setIdPanier(rst.getInt("idPanier"));
 
-    
+            LigneCommandes.add(lc);
+        }
+       System.out.println(" display  All LigneCommandes");
+
+     return LigneCommandes; 
+    }
+
+    public LigneCommande getLigneCommandeByPanierEtProduit(int idProduit, int idPanier) {
+        LigneCommande lc = null;
+        try{
+          Statement stm = connexion.createStatement();
+          String requete = " SELECT * FROM `ligne_commande` WHERE `idproduit`= '"+idProduit+"' and `idpanier`='"+idPanier+"'" ;
+          ResultSet rst = stm.executeQuery(requete);
+
+            if (rst.next())
+            {
+                lc=new LigneCommande(rst.getInt("id"),
+                        rst.getInt("idProduit"),
+                        rst.getString("nomProduit"),
+                        rst.getInt("quantite"),
+                        rst.getInt("idPanier"));
+            }
+                  System.out.println(" display LigneCommande by produit and panier ");
+
+        
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(lc);
+        return lc ;
+    }
+
 }

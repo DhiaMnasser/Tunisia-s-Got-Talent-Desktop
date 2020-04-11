@@ -21,10 +21,12 @@ import java.io.OutputStream;
 import tgt.MyDbConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author Haddad
  */
+
 public class ProduitService implements IserviceProduit{
  Connection cnx;
   public ProduitService() {
@@ -35,7 +37,7 @@ public class ProduitService implements IserviceProduit{
     public void addProduct(Produit p) throws SQLException {
         try{    Statement stm=cnx.createStatement();
              String requete= "INSERT INTO `produit`"
-                +"(`Nom_Produit`, `Quantite_Totale`, `Prix_Produit`, `Etat_Produit`, `Taille_Produit`, `Id_Categorie`)"
+                +"(`nom`, `qte`, `prix`, `etat`, `size`, `cat_id`)"
                 +  "VALUES ('"+p.getNom_Produit()+"', "
                 +"'"+p.getQuantite_Totale()+"',"
                 +"'"+p.getPrix_Produit()+"',"
@@ -51,7 +53,7 @@ public class ProduitService implements IserviceProduit{
     @Override
     public void deleteProduct(int id) throws SQLException {
         PreparedStatement pst;
-        String requete = " DELETE FROM `produit` WHERE Id_Produit='"+id+"'" ;
+        String requete = " DELETE FROM `produit` WHERE id='"+id+"'" ;
         pst = cnx.prepareStatement(requete);
         Statement ste=cnx.createStatement();
         ste.executeUpdate(requete);
@@ -82,7 +84,7 @@ public class ProduitService implements IserviceProduit{
         List<Produit> products = new ArrayList<>();
         while (rst.next()) {
             Produit p2 = new Produit();
-            p2.setId_Produit(rst.getInt("Id_Produit"));
+            p2.setId_Produit(rst.getInt("id"));
             p2.setNom_Produit(rst.getString("Nom_Produit"));
             p2.setQuantite_Totale(rst.getInt("Quantite_Totale"));
             p2.setPrix_Produit(rst.getFloat("Prix_Produit"));
@@ -99,16 +101,20 @@ public class ProduitService implements IserviceProduit{
     @Override
     public Produit getById(int id) throws SQLException {
           Produit p = null;
-          Statement stm = cnx.createStatement();
-          String requete = " SELECT * FROM `produit` WHERE `Id_Produit`= '"+id+"'" ;
-          ResultSet rst = stm.executeQuery(requete);
-
+      Statement stm = cnx.createStatement();
+         String requete = " SELECT * FROM `produit` WHERE id="+id;
+        try {
+           
+//            stm = cnx.createStatement();
+            ResultSet rst = stm.executeQuery(requete);
             if (rst.next())
-            {p=new Produit(rst.getInt("Id_Produit"),rst.getString("Nom_Produit"),rst.getInt("Quantite_Totale"),rst.getFloat("Prix_Produit"),
-            rst.getString("Etat_Produit"),rst.getString("Taille_Produit"),rst.getInt("Id_Categorie")
-            );}
-                  System.out.println("😃😈 display by id 😍 succeeds 😈😃");
-   
+            p=new Produit(rst.getInt("id"),rst.getString("nom"),rst.getInt("qte"),rst.getFloat("prix"),
+            rst.getString("etat"),rst.getString("size"),rst.getInt("cat_id"));
+            
+                } catch (SQLException ex) {
+        }
+                          System.out.println(" display Produit by id succeeds ");
+
         return p ;
     
     }
@@ -116,18 +122,18 @@ public class ProduitService implements IserviceProduit{
       public Produit getByName(String nom) throws SQLException {
       Produit p = null;
       Statement stm = cnx.createStatement();
-         String requete = " SELECT * FROM `produit` WHERE (Nom_Produit like '"+nom+"%')" ;
+         String requete = " SELECT * FROM `produit` WHERE (nom like '"+nom+"%')" ;
         try {
            
-            stm = cnx.createStatement();
+//            stm = cnx.createStatement();
             ResultSet rst = stm.executeQuery(requete);
             if (rst.next())
-            p=new Produit(rst.getInt("Id_Produit"),rst.getString("Nom_Produit"),rst.getInt("Quantite_Totale"),rst.getFloat("Prix_Produit"),
-            rst.getString("Etat_Produit"),rst.getString("Taille_Produit"),rst.getInt("Id_Categorie"));
+            p=new Produit(rst.getInt("id"),rst.getString("nom"),rst.getInt("qte"),rst.getFloat("prix"),
+            rst.getString("etat"),rst.getString("size"),rst.getInt("cat_id"));
             
                 } catch (SQLException ex) {
         }
-                          System.out.println("😃😈 display by name 😍 succeeds 😈😃");
+                          System.out.println(" display Produit by name succeeds ");
 
         return p ;
     
@@ -142,7 +148,7 @@ public class ProduitService implements IserviceProduit{
        
      while (rst.next()) {
          
-         int Id_Produit=rst.getInt("Id_Produit");
+         int Id_Produit=rst.getInt("id");
          String Nom_Produit=rst.getString("Nom_Produit");
          int Quantite_Totale=rst.getInt("Quantite_Totale");
          float Prix_Produit=rst.getFloat("Prix_Produit");

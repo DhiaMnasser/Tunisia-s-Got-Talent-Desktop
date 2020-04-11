@@ -34,7 +34,7 @@ public class CommandeService implements iCommande{
             String requete= "INSERT INTO `commande`(`user_id`, `date`, `etat`, `idPanier`, `address`, `tel`) VALUES  ('"
                     +c.getUser_id()+"', '"
                     +c.getDate()+"','"
-                    +c.getEtat()+"','"
+                    +(c.getEtat()?1:0)+"','"
                     +c.getIdPanier()+"','"   
                     +c.getAddress()+"','"                    
                     +c.getTel()+"')";
@@ -108,7 +108,7 @@ public class CommandeService implements iCommande{
 
             Commandes.add(c);
         }
-       System.out.println("😃😈 display  All Commandes😈😃");
+       System.out.println("display  All Commandes");
 
      return Commandes;
     }
@@ -124,7 +124,7 @@ public class CommandeService implements iCommande{
             {
                 c=new Commande(rst.getInt("id"), rst.getInt("user_id"),rst.getDate("date"),rst.getBoolean("etat"),rst.getInt("idPanier"),rst.getString("address"),rst.getString("tel"));
             }
-                  System.out.println("😃😈 display Commande by id  😈😃");
+                  System.out.println(" display Commande by id  ");
 
        
         return c ;    
@@ -162,7 +162,26 @@ public class CommandeService implements iCommande{
     
     @Override
     public List<Commande> chercherCommande(String query) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Statement stm = connexion.createStatement();
+        String requete = "select * from `commande` where ( `id` like '%"+query+"%' or `date` like '%"+query+"%' )";
+        ResultSet rst = stm.executeQuery(requete);
+        List<Commande> commandes = new ArrayList<>();
+        while (rst.next()) {
+            Commande c = new Commande();
+            c.setId(rst.getInt("id"));
+            c.setUser_id(rst.getInt("user_id"));
+            c.setDate(rst.getDate("date"));
+            c.setEtat(rst.getBoolean("etat"));
+            c.setIdPanier(rst.getInt("idPanier"));
+            c.setAddress(rst.getString("address"));
+            c.setTel(rst.getString("tel"));
+
+            commandes.add(c);
+        }
+       System.out.println("chercher Commandes "+query);
+
+     return commandes;   
     }
+    
     
 }

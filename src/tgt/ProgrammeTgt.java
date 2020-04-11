@@ -27,22 +27,11 @@ public class ProgrammeTgt extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            /*   Button btn = new Button();
-            btn.setText("Say 'Hello World'");
-            btn.setOnAction(new EventHandler<ActionEvent>() {
+           
             
-            @Override
-            public void handle(ActionEvent event) {
-            System.out.println("Hello World!");
-            }
-            });
-            
-            StackPane root = new StackPane();
-            root.getChildren().add(btn);
-            */
-            
-            Parent root = FXMLLoader.load(getClass().getResource("/view/InterfacePeesonne.fxml"));
-            
+            Parent root = FXMLLoader.load(getClass().getResource("/tgt/Views/main.fxml"));
+//            Parent root = FXMLLoader.load(getClass().getResource("/Achat/Views/AdminCommandes.fxml"));
+
             Scene scene = new Scene(root);
             
             primaryStage.setTitle("TGT!");

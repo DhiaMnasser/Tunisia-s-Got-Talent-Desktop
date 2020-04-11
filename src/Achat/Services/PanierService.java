@@ -109,14 +109,15 @@ public class PanierService implements iPanierService{
 
             paniers.add(p);
         }
-       System.out.println("😃😈 display  😈😃");
+       System.out.println(" display ");
 
      return paniers; 
     }
 
     @Override
     public Panier getPanierById(int id) throws SQLException {
-       Panier p = null;
+          Panier p = null;
+        try{
           Statement stm = connexion.createStatement();
           String requete = " SELECT * FROM `Panier` WHERE `id`= '"+id+"'" ;
           ResultSet rst = stm.executeQuery(requete);
@@ -128,6 +129,12 @@ public class PanierService implements iPanierService{
                   System.out.println("😃😈 display by id  😈😃");
 
        
+        
+        }catch(SQLException e){
+            System.out.println("panier not found");
+            System.out.println(e.getMessage());
+
+        }
         return p ;
     
     }
@@ -142,9 +149,9 @@ public class PanierService implements iPanierService{
             pst.setInt(2,p.getId());
 
             pst.executeUpdate();
-      System.out.println("😃😈 etat changed  😈😃");    
+      System.out.println(" etat panier changed  ");    
       }catch(SQLException e){
-            System.out.println("😃😈 changer etat error 😈😃");
+            System.out.println(" changer etat error ");
 
         }
       }
@@ -154,7 +161,28 @@ public class PanierService implements iPanierService{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  
+    public Panier getPanierByUser(int idUser) throws SQLException {
+        Panier p = null;
+        try{
+          Statement stm = connexion.createStatement();
+          String requete = " SELECT * FROM `Panier` WHERE `user_id`= '"+idUser+"' and `etat` = 1" ;
+          ResultSet rst = stm.executeQuery(requete);
+
+            if (rst.next())
+            {
+                p=new Panier(rst.getInt("id"), rst.getInt("user_id"),rst.getDouble("prixtotal"),rst.getBoolean("etat"));
+            }
+                  System.out.println("display by id  ");
+
+       
+        
+        }catch(SQLException e){
+            System.out.println("panier not found");
+            System.out.println(e.getMessage());
+
+        }
+        return p ;
+    }
 
     
 

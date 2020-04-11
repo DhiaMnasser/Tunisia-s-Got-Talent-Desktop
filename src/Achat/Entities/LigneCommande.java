@@ -24,6 +24,13 @@ public class LigneCommande {
         this.quantite = quantite;
         this.idPanier = idPanier;
     }
+    
+    public LigneCommande( int idproduit, String nomProduit, int quantite, int idPanier) {
+        this.idproduit = idproduit;
+        this.nomProduit = nomProduit;
+        this.quantite = quantite;
+        this.idPanier = idPanier;
+    }
 
     public LigneCommande() {
     }

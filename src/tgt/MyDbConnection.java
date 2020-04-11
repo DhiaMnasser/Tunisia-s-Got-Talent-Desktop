@@ -14,7 +14,7 @@ public class MyDbConnection {
 
     private static MyDbConnection instance;
     private Connection connexion;
-    private String url = "JDBC:mysql://localhost:3306/tgtof";
+    private String url = "JDBC:mysql://localhost/tgtof";
     private String user = "root";
     private String password = "";
 

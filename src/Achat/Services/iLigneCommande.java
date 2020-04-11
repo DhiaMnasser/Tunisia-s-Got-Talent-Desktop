@@ -20,9 +20,12 @@ public interface iLigneCommande {
     public void deleteLigneCommande(int id)throws SQLException;
     public void updateLigneCommande(LigneCommande lc,int qte)throws SQLException;
     public List<LigneCommande> getAllLigneCommandes() throws SQLException;
+    public List<LigneCommande> getLigneCommandesByPanier(int id) throws SQLException;
     public LigneCommande getLigneCommandeById(int id)throws SQLException;
     public LigneCommande getLigneCommandeByNomProduit(String nomPdt) throws SQLException;
-    public List<LigneCommande> chercherLigneCommande(String query) throws SQLException;
+    public LigneCommande getLigneCommandeByIdProduit(int IdPdt) throws SQLException;
+
+    public List<LigneCommande> chercherLigneCommande(String query, int idPanier) throws SQLException;
 
   
 }
