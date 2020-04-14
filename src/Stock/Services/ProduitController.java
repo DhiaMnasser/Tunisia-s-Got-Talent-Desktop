@@ -51,11 +51,11 @@ public class ProduitController implements Initializable {
     @FXML
     private Label openPanierBtn;
     @FXML
-    private Button serwel;
+    private Button Acc1;
     @FXML
-    private Button tshirt;
+    private Button Ticket1;
     @FXML
-    private Button bracelet;
+    private Button Tshirt1;
 
     /**
      * Initializes the controller class.

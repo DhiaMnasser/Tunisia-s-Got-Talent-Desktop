@@ -4,14 +4,30 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/LigneCommandeService.java</file>
-            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Entities/Commande.java</file>
-            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Stock/Services/IserviceProduit.java</file>
-            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/PanierService.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Controllers/PanierController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Stock/Entities/Produit.java</file>
             <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/CommandeService.java</file>
-            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/iCommande.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/tgt/Controllers/MainController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/GeneratePdf.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Entities/Commande.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Entities/StripePayment.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Controllers/CommandePaymentController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/css/admincommandes.css</file>
             <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/iLigneCommande.java</file>
-            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/tgt/Tgt.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/iPanierService.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Controllers/ConsulterCommandeController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/tgt/ProgrammeTgt.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Entities/Panier.java</file>
             <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Stock/Services/ProduitService.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Controllers/AdminCommandesController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Stock/Services/ProduitController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/tgt/MyDbConnection.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Views/AdminCommandes.fxml</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Entities/LigneCommande.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Services/PanierService.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Controllers/AdminConsulterCommandeController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Controllers/CommandeController.java</file>
+            <file>file:/D:/9raya%20@_@%20!/3eme%20annee/semestre%202/PI%20Dev/JAVA/tgttest/tgt/src/Achat/Controllers/CheckoutController.java</file>
         </group>
     </open-files>
 </project-private>

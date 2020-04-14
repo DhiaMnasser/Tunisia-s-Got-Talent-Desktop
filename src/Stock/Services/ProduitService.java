@@ -122,7 +122,7 @@ public class ProduitService implements IserviceProduit{
       public Produit getByName(String nom) throws SQLException {
       Produit p = null;
       Statement stm = cnx.createStatement();
-         String requete = " SELECT * FROM `produit` WHERE (nom like '"+nom+"%')" ;
+         String requete = " SELECT * FROM `produit` WHERE (nom = '"+nom+"')" ;
         try {
            
 //            stm = cnx.createStatement();

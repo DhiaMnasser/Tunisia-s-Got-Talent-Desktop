@@ -83,7 +83,7 @@ public class PanierService implements iPanierService{
           try{ 
             String requete = " UPDATE `Panier` SET `prixTotal`=? WHERE `id`=?" ;
             pst = connexion.prepareStatement(requete);     
-            pst.setDouble(1,newPrix+p.getPrixTotal());
+            pst.setDouble(1,newPrix);
             pst.setInt(2,p.getId());
             pst.executeUpdate();
       System.out.println("😃😈 Panier updated  😈😃"); 

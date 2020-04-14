@@ -40,12 +40,9 @@ import javafx.stage.Stage;
  * @author Klaizer
  */
 public class AdminConsulterCommandeController implements Initializable {
-    
+
     LigneCommandeService lcs = new LigneCommandeService();
     CommandeService cmds = new CommandeService();
-
-    
-    
 
     @FXML
     private AnchorPane anchorPane;
@@ -80,7 +77,7 @@ public class AdminConsulterCommandeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void openHome(MouseEvent event) {
@@ -90,63 +87,63 @@ public class AdminConsulterCommandeController implements Initializable {
     private void openStore(MouseEvent event) {
     }
 
-     @FXML
+    @FXML
     private void openCommande(MouseEvent event) {
-        
+
         try {
-            
+
             Parent commandePage = FXMLLoader.load(getClass().getResource("/Achat/Views/AdminCommandes.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(commandePage));
             stage.setTitle("Admin : Commandes");
-            
+
         } catch (IOException ex) {
-                Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @FXML
     private void validerCommande(ActionEvent event) throws SQLException {
         Commande c = cmds.getCommandeById(Integer.parseInt(numCommande.getText()));
         cmds.validerCommande(c);
-        
+
     }
-    
+
     //  hethi mawjouda fl controller li bch ya3ml l'affichage ta3 l'commande   
-     public void showCommande(Commande cmd) {
+    public void showCommande(Commande cmd) {
         // TODO  
-         System.out.println(cmd);
-        List<LigneCommande> lgList = null;     
+        System.out.println(cmd);
+        List<LigneCommande> lgList = null;
         try {
-            
+
 //      tjib f list ta3 ligneCommande (les produits) li teb3in l'commande        
             lgList = lcs.getLigneCommandesByPanier(cmd.getIdPanier());
             System.out.println(lgList);
         } catch (SQLException ex) {
             Logger.getLogger(ConsulterCommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         ObservableList<LigneCommande> obLgList = FXCollections.observableArrayList(lgList);
         col_produit.setCellValueFactory(new PropertyValueFactory<>("nomProduit"));
         col_quantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
 //        col_prix.set
 //        col_actions.setCellValueFactory(new PropertyValueFactory<>("button"));
-        numCommande.setText(""+cmd.getId());
-        date.setText(""+cmd.getDate());
-        adresse.setText(""+cmd.getAddress());
-        tel.setText(""+cmd.getTel());
+        numCommande.setText("" + cmd.getId());
+        date.setText("" + cmd.getDate());
+        adresse.setText("" + cmd.getAddress());
+        tel.setText("" + cmd.getTel());
         String et;
-        if (cmd.getEtat()){
+        if (cmd.getEtat()) {
             et = "validee";
-        }else{
+        } else {
             et = "en cours";
         }
-            
+
         etat.setText(et);
 
         table.setItems(obLgList);
-        
-    }  
-    
+
+    }
+
 }

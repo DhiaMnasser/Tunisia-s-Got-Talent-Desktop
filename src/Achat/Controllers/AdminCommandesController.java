@@ -52,7 +52,7 @@ public class AdminCommandesController implements Initializable {
     private TableColumn<Commande, Date> col_date;
     @FXML
     private TableColumn<Commande, Boolean> col_etat;
-     @FXML
+    @FXML
     private TableColumn<Commande, Button> col_actions;
     @FXML
     private Label openHomeBtn;
@@ -62,55 +62,51 @@ public class AdminCommandesController implements Initializable {
     private Label openCommandeBtn;
     @FXML
     private Button consulter;
-    
+
     Connection connexion;
-    ObservableList <Commande> oblist = FXCollections.observableArrayList();
+    ObservableList<Commande> oblist = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          // TODO
+        // TODO
         try {
 
-                connexion=MyDbConnection.getInstance().getConnexion();
-                
-                
+            connexion = MyDbConnection.getInstance().getConnexion();
+
 //                TODO : select commandes of the connected user
 //                FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/Khrouf/Views/User.fxml"));
 //                Parent root = (Parent)userLoader.load();
 //                UserController userController =  userLoader.getController();
 //                User currentUser = userController.getConnectedUser();
 //                ResultSet rs = connexion.createStatement().executeQuery("" SELECT * FROM `commande` WHERE `user_id`= '"+currentUser.getId()+"'" );
+            ResultSet rs = connexion.createStatement().executeQuery(" SELECT * FROM `commande` ");
 
-                
-                ResultSet rs = connexion.createStatement().executeQuery(" SELECT * FROM `commande` ");
-              
-                while (rs.next()){
-                    
-                    oblist.add(new Commande(rs.getInt("id"),
-                            rs.getInt("user_id"),
-                            rs.getDate("date"),
-                            rs.getBoolean("etat"),
-                            rs.getInt("idPanier"),
-                            rs.getString("address"),
-                            rs.getString("tel")));
-       
-                }
+            while (rs.next()) {
+
+                oblist.add(new Commande(rs.getInt("id"),
+                        rs.getInt("user_id"),
+                        rs.getDate("date"),
+                        rs.getBoolean("etat"),
+                        rs.getInt("idPanier"),
+                        rs.getString("address"),
+                        rs.getString("tel")));
+
+            }
 
         } catch (Exception e) {
-                        Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, e);
 
-            
         }
-        
+
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         col_actions.setCellValueFactory(new PropertyValueFactory<>("button"));
         table.setItems(oblist);
-    }    
+    }
 
     @FXML
     private void rechercherCommandes(InputMethodEvent event) {
@@ -126,41 +122,39 @@ public class AdminCommandesController implements Initializable {
 
     @FXML
     private void openCommande(MouseEvent event) {
-     
+
     }
 
     @FXML
     private void consulter(ActionEvent event) {
-        
-         try {
-            
-                
-                if(table.getSelectionModel().getSelectedItem() != null){
-                    
+
+        try {
+
+            if (table.getSelectionModel().getSelectedItem() != null) {
 
 //      na3mel f instance ta3 controller e5er li bch yji fih affichage ta3 ka3ba wa7da w bch tet7at fih methode showCommande() 
                 FXMLLoader consulterLoader = new FXMLLoader(getClass().getResource("/Achat/Views/AdminConsulterCommande.fxml"));
-                Parent root = (Parent)consulterLoader.load();
-                AdminConsulterCommandeController accController =  consulterLoader.getController();
-                
+                Parent root = (Parent) consulterLoader.load();
+                AdminConsulterCommandeController accController = consulterLoader.getController();
+
 //      t3ayet lel fonction showCommande ta3 controller le5er          
                 accController.showCommande(table.getSelectionModel().getSelectedItem());
-                
+
 //      bch thezzek lel interface lo5ra                
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(root));
-                stage.setTitle("Admin : Commande "+table.getSelectionModel().getSelectedItem().getId());
-                }else{
-                    Alert alert1 = new Alert(Alert.AlertType.WARNING);
-                    alert1.setTitle("Alert");
-                    alert1.setContentText("Selectionner une commande");
-                    alert1.setHeaderText(null);
-                    alert1.show();
-                        }
-        
+                stage.setTitle("Admin : Commande " + table.getSelectionModel().getSelectedItem().getId());
+            } else {
+                Alert alert1 = new Alert(Alert.AlertType.WARNING);
+                alert1.setTitle("Alert");
+                alert1.setContentText("Selectionner une commande");
+                alert1.setHeaderText(null);
+                alert1.show();
+            }
+
         } catch (IOException ex) {
             Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

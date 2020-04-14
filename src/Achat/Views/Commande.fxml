@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1154.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.CommandeController">
+<AnchorPane id="AnchorPane" fx:id="anc" prefHeight="747.0" prefWidth="1154.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.CommandeController">
     <stylesheets>
         <URL value="@/Achat/css/commande.css" />
     </stylesheets>
     <children>
       <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="305.0" style="-fx-background-color: #007FFF;" />
-      <Label layoutX="644.0" layoutY="14.0" prefHeight="42.0" prefWidth="173.0" text="Commandes">
+      <Label layoutX="615.0" layoutY="24.0" prefHeight="42.0" prefWidth="228.0" text="Mes Commandes">
          <font>
             <Font name="Cooper Black" size="27.0" />
          </font>
@@ -31,10 +31,9 @@
       <TextField fx:id="rechercher" layoutX="320.0" layoutY="116.0" onAction="#rechercherCommandes" prefHeight="31.0" prefWidth="320.0" promptText="Rechercher" />
       <TableView fx:id="table" layoutX="320.0" layoutY="174.0" prefHeight="512.0" prefWidth="817.0">
         <columns>
-          <TableColumn fx:id="col_id" prefWidth="178.0" text="N Commande" />
-          <TableColumn fx:id="col_date" prefWidth="249.0" text="Date" />
-            <TableColumn fx:id="col_etat" prefWidth="238.0" text="Etat" />
-            <TableColumn fx:id="col_actions" prefWidth="150.0" text="Action" />
+          <TableColumn fx:id="col_id" prefWidth="275.0" text="N Commande" />
+          <TableColumn fx:id="col_date" prefWidth="279.0" text="Date" />
+            <TableColumn fx:id="col_etat" prefWidth="111.0" text="Etat" />
         </columns>
       </TableView>
       <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="124.0" layoutY="145.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home">

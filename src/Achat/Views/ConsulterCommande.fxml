@@ -27,11 +27,10 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="322.0" layoutY="332.0" prefHeight="347.0" prefWidth="817.0">
+      <TableView fx:id="table" layoutX="322.0" layoutY="332.0" prefHeight="347.0" prefWidth="815.0">
          <columns>
-            <TableColumn fx:id="col_produit" prefWidth="259.0" text="Produit" />
-            <TableColumn fx:id="col_quantite" prefWidth="279.0" text="Quantite" />
-            <TableColumn fx:id="col_prix" prefWidth="263.0" text="Prix" />
+            <TableColumn fx:id="col_produit" prefWidth="218.0" text="Produit" />
+            <TableColumn fx:id="col_quantite" prefWidth="192.0" text="Quantite" />
          </columns>
       </TableView>
       <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="145.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home">
