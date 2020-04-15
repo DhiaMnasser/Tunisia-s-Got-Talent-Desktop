@@ -38,7 +38,7 @@ public class GeneratePdf {
             LigneCommandes = lcs.getLigneCommandesByPanier(cmd.getIdPanier());
             System.out.println("pdf source");
 
-            String fileName = "/Pdf_commandes/cmd"+cmd.getIdPanier()+".pdf";
+            String fileName = "D:\\9raya @_@ !\\3eme annee\\semestre 2\\PI Dev\\JAVA\\tgttest\\tgt\\src\\Pdf_commandes\\cmd"+cmd.getIdPanier()+".pdf";
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
             

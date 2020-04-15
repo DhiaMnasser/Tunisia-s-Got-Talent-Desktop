@@ -29,8 +29,8 @@
       </Label>
       <TableView fx:id="table" layoutX="322.0" layoutY="332.0" prefHeight="347.0" prefWidth="815.0">
          <columns>
-            <TableColumn fx:id="col_produit" prefWidth="325.0" text="Produit" />
-            <TableColumn fx:id="col_quantite" prefWidth="85.0" text="Quantite" />
+            <TableColumn fx:id="col_produit" prefWidth="218.0" text="Produit" />
+            <TableColumn fx:id="col_quantite" prefWidth="192.0" text="Quantite" />
          </columns>
       </TableView>
       <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="145.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home">
@@ -79,7 +79,7 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="807.0" layoutY="197.0" text="Tel :">
+      <Label layoutX="817.0" layoutY="194.0" text="Tel :">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
@@ -89,7 +89,7 @@
             <Font name="Arial Black" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="807.0" layoutY="134.0" text="Etat :">
+      <Label layoutX="817.0" layoutY="132.0" text="Etat :">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
@@ -99,11 +99,5 @@
       <Text fx:id="adresse" layoutX="453.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="413.9999907016754" />
       <Text fx:id="etat" layoutX="887.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
       <Text fx:id="tel" layoutX="870.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
-      <Label layoutX="808.0" layoutY="253.0" prefHeight="27.0" prefWidth="119.0" text="Prix Total :">
-         <font>
-            <Font name="Arial Black" size="18.0" />
-         </font>
-      </Label>
-      <Text fx:id="prixTotal" layoutX="927.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
    </children>
 </AnchorPane>

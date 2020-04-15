@@ -7,9 +7,7 @@ package Achat.Controllers;
 
 import Achat.Entities.Commande;
 import Achat.Entities.LigneCommande;
-import Achat.Entities.Panier;
 import Achat.Services.LigneCommandeService;
-import Achat.Services.PanierService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -57,6 +55,8 @@ public class ConsulterCommandeController implements Initializable {
     @FXML
     private TableColumn<LigneCommande, Integer> col_quantite;
     @FXML
+    private TableColumn<LigneCommande, Integer> col_prix;
+    @FXML
     private AnchorPane anchorPane;
 
     Connection connexion;
@@ -72,8 +72,6 @@ public class ConsulterCommandeController implements Initializable {
     private Text etat;
     @FXML
     private Text tel;
-    @FXML
-    private Text prixTotal;
 
     /**
      * Initializes the controller class.
@@ -81,6 +79,21 @@ public class ConsulterCommandeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO  
+
+        List<LigneCommande> lgList = null;
+        try {
+            lgList = lcs.getLigneCommandesByPanier(54);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsulterCommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ObservableList<LigneCommande> obLgList = FXCollections.observableArrayList(lgList);
+        col_produit.setCellValueFactory(new PropertyValueFactory<>("nomProduit"));
+        col_quantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+//        col_prix.setCellValueFactory(new PropertyValueFactory<>(""));
+//        col_actions.setCellValueFactory(new PropertyValueFactory<>("button"));
+
+        table.setItems(obLgList);
+
     }
 
     @FXML
@@ -116,7 +129,7 @@ public class ConsulterCommandeController implements Initializable {
             Parent panierPage = FXMLLoader.load(getClass().getResource("/tgt/Views/main.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(panierPage));
-            stage.setTitle("Home");
+            stage.setTitle("Main");
         } catch (IOException ex) {
             Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -130,7 +143,7 @@ public class ConsulterCommandeController implements Initializable {
             Parent panierPage = FXMLLoader.load(getClass().getResource("/Achat/Views/Commande.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(panierPage));
-            stage.setTitle("Mes Commandes");
+            stage.setTitle("Commandes");
 
         } catch (IOException ex) {
             Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -139,18 +152,14 @@ public class ConsulterCommandeController implements Initializable {
     }
 
 //  hethi mawjouda fl controller li bch ya3ml l'affichage ta3 l'commande   
-    public void showCommande(Commande cmd) throws SQLException {
+    public void showCommande(int idPanier, Commande cmd) {
         // TODO  
 
         List<LigneCommande> lgList = null;
-        PanierService pans = new PanierService();
-        
-           Panier pan = pans.getPanierById(cmd.getIdPanier());
-        
         try {
 
 //      tjib f list ta3 ligneCommande (les produits) li teb3in l'commande        
-            lgList = lcs.getLigneCommandesByPanier(pan.getId());
+            lgList = lcs.getLigneCommandesByPanier(idPanier);
         } catch (SQLException ex) {
             Logger.getLogger(ConsulterCommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -164,7 +173,6 @@ public class ConsulterCommandeController implements Initializable {
         date.setText("" + cmd.getDate());
         adresse.setText("" + cmd.getAddress());
         tel.setText("" + cmd.getTel());
-        prixTotal.setText(""+pan.getPrixTotal()+" DT");
         String et;
         if (cmd.getEtat()) {
             et = "validee";
