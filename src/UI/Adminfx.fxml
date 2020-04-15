@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="365.0" prefWidth="831.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+   <children>
+      <TextField fx:id="txtName" layoutX="78.0" layoutY="142.0" />
+      <TextField fx:id="txtEmail" layoutX="78.0" layoutY="188.0" />
+      <TextField fx:id="txtPass" layoutX="78.0" layoutY="240.0" />
+      <Group layoutX="49.0" layoutY="266.0" />
+      <Label layoutX="14.0" layoutY="146.0" text="username:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="32.0" layoutY="192.0" text="Email:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label layoutX="15.0" layoutY="244.0" text="password:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TableView fx:id="tableView" layoutX="292.0" layoutY="88.0" onMouseReleased="#actualiserFormulaire" prefHeight="222.0" prefWidth="514.0" />
+      <TextField fx:id="txtId" editable="false" layoutX="79.0" layoutY="91.0" />
+      <Label layoutX="42.0" layoutY="95.0" text="Id:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <TextField fx:id="txtRech" layoutX="484.0" layoutY="40.0" />
+      <Button fx:id="btnPesquisar" layoutX="692.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnRechercheAction" text="search" />
+      <Label layoutX="399.0" layoutY="44.0" text="Research:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Button fx:id="btnRemover" layoutX="171.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnRemoverAction" text="Remove" />
+      <Button fx:id="btnNew" layoutX="56.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnNewAction" text="Clear" />
+      <Button fx:id="btnSaver" layoutX="113.0" layoutY="284.0" mnemonicParsing="false" onAction="#btnSaveAction" text="save" />
+      <Pane layoutX="163.0" layoutY="-276.0" prefHeight="345.0" prefWidth="200.0" rotate="-37.9" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
+      <Button fx:id="btnRetour" layoutX="31.0" layoutY="28.0" mnemonicParsing="false" text="Retour" onAction="#btnRetourAction" />
+   </children>
+</AnchorPane>

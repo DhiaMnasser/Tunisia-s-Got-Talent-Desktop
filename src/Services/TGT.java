@@ -7,6 +7,7 @@ package Services;
 
 import Entities.Evenement;
 import Entities.Evenement;
+import Entities.Personne;
 import Entities.Region;
 import Services.EvenementService;
 import Services.RegionService;
@@ -34,13 +35,16 @@ public class TGT extends Application{
     
         @Override
     public void start(Stage stage) throws Exception {
-         Parent root = FXMLLoader.load(getClass().getResource("/Controllers/MainInterface.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("/UI/login.fxml"));
 
             Scene scene = new Scene(root);
             stage.setTitle("TGT");
             stage.setScene(scene);
             stage.show();
+            PersonneService ps = new PersonneService() ;
+        Personne p = new Personne("medg", "mohamed.khrouf4@gmail.com","test");
         
+        ps.promote("achraf");
         /*Button btn = new Button();
         btn.setText("Say 'Hello World'");
         

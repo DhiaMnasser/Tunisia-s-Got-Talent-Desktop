@@ -5,6 +5,10 @@
  */
 package Entities;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Date;
 
 /**
@@ -16,7 +20,7 @@ public class Evenement {
     private String Duree, Gagnant ,nomevent , image;
     private String Date_d,Date_f;
     private int MaxParticipants, Etat,region_id;
-
+Connection connexion;
 
     
     /****************************************************/
@@ -181,7 +185,22 @@ public Evenement (String nomevent,String Duree, String Gagnant, String image, St
     public String toString() {
         return "Evenement{" + "id=" + id + ", Duree=" + Duree + ", Gagnant=" + Gagnant + ", nomevent=" + nomevent + ", image=" + image + ", Date_d=" + Date_d + ", Date_f=" + Date_f + ", MaxParticipants=" + MaxParticipants + ", Etat=" + Etat + '}';
     }
+      public String chercherregionparnom(int s ) throws SQLException
+    {
+        String req= "  select Nom from region where id= '"+s+"'";
         
+        Statement pstm = connexion.createStatement();
+       ResultSet rst = pstm.executeQuery(req);
+       
+       rst.last();
+       int nbrRow=rst.getRow();
+       if (nbrRow != 0 )
+       {
+           String a = rst.getString("Nom") ;
+           return a ;}
+       return "" ;
+       
+    }   
         
     
 }

@@ -6,7 +6,9 @@
 package Controllers;
 
 import Entities.Evenement;
+import Entities.Region;
 import Services.EvenementService;
+import Services.RegionService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -65,6 +67,7 @@ private TextField rechercher ;
     private TableColumn<Evenement, String> image;
     public ObservableList<Evenement> data = FXCollections.observableArrayList();
 EvenementService s = new EvenementService () ;
+
     @FXML
     private Button ajouter;
     @FXML
@@ -93,21 +96,29 @@ EvenementService s = new EvenementService () ;
                   region_id.setCellValueFactory(new PropertyValueFactory<>("region_id"));
                   image.setCellValueFactory(new PropertyValueFactory<>("image"));
 
-
+            
+        
+    
        
   
        
         
         try {
-            System.out.println(data);
+            
             data = s.indexAction();
-            System.out.println(data);
+            
             Evenement.setItems(data);
-            System.out.println(data);
+           
+            
+           // System.out.println(data.get(1));
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(AfficherAllController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+         
+    }   
+    
     @FXML
     private void ajouterevent(ActionEvent event) throws IOException {
         Parent uploadPage= FXMLLoader.load(getClass().getResource("Ajout.fxml"));
