@@ -219,14 +219,14 @@ public class CommandeController implements Initializable {
 
 //    hethi tji fl controller li fih list ta3 les commande, velo , ....
     @FXML
-    private void consulter(ActionEvent event) {
+    private void consulter(ActionEvent event) throws SQLException {
 
         try {
 
             if (table.getSelectionModel().getSelectedItem() != null) {
 
 //             bch        
-                int idPanier = table.getSelectionModel().getSelectedItem().getIdPanier();
+                Commande commande = table.getSelectionModel().getSelectedItem();
 
 //      na3mel f instance ta3 controller e5er li bch yji fih affichage ta3 ka3ba wa7da w bch tet7at fih methode showCommande() 
                 FXMLLoader consulterLoader = new FXMLLoader(getClass().getResource("/Achat/Views/ConsulterCommande.fxml"));
@@ -234,7 +234,7 @@ public class CommandeController implements Initializable {
                 ConsulterCommandeController ccController = consulterLoader.getController();
 
 //      t3ayet lel fonction showCommande ta3 controller le5er          
-                ccController.showCommande(idPanier, table.getSelectionModel().getSelectedItem());
+                ccController.showCommande(commande);
 
 //      bch thezzek lel interface lo5ra                
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -268,7 +268,7 @@ public class CommandeController implements Initializable {
         System.out.println("cmd ajouter");
         pans.changerEtatPanier(panier);
         pans.addPanier(pan1);
-        System.out.println("new panier assigned to user12");
+        System.out.println("new panier assigned to user"+currentUser);
 
         System.out.println("pdf in commande controller");
 

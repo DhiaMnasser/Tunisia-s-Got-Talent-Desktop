@@ -28,7 +28,6 @@ public class ProgrammeTgt extends Application {
     public void start(Stage primaryStage) {
         try {
            
-            tgt.Entities.SendEmailTLS.sendMail();
             Parent root = FXMLLoader.load(getClass().getResource("/tgt/Views/main.fxml"));
 //            Parent root = FXMLLoader.load(getClass().getResource("/Achat/Views/AdminCommandes.fxml"));
 //            Parent root = FXMLLoader.load(getClass().getResource("/Achat/Views/CommandePayment.fxml"));

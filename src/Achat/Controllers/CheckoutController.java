@@ -43,7 +43,8 @@ public class CheckoutController implements Initializable {
 
     //  TODO complete the connected user
     int currentUser = 12;
-    String add, tt;
+    String userMail = "mohameddhia.mnasser@esprit.tn";
+    
 
     @FXML
     private TextField tel;
@@ -102,6 +103,8 @@ public class CheckoutController implements Initializable {
 
         commandeController.ajouterCommande(panier, address.getText(), tel.getText());
         System.out.println("ajouterCommande is called");
+        tgt.Entities.SendEmailTLS.sendCommandeConfrimationMail(userMail,panier);
+
 
     }
 
@@ -169,7 +172,7 @@ public class CheckoutController implements Initializable {
             Panier panier = pans.getPanierByUser(currentUser);
             System.out.println("payment controller : " + panier);
 
-            String userMail = "aaa@es.tn";
+            
 
             if (tel.getText().length() != 8) {
 
