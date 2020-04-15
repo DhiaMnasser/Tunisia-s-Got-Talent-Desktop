@@ -94,6 +94,7 @@ RegionService s = new RegionService () ;
         if(table.getSelectionModel().getSelectedItems().size()!=0) {
            
            s.supprimerRegion(table.getSelectionModel().getSelectedItems().get(0).getId());
+           new Alert(Alert.AlertType.INFORMATION, "Région supprimée !").show();
              try {
             javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("AfficherAllR.fxml"));
             Scene sceneview = new Scene(tableview);

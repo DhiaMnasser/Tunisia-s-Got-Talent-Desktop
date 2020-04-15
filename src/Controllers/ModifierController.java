@@ -7,9 +7,11 @@ package Controllers;
 
 import Entities.Evenement;
 import Services.EvenementService;
+import Services.RegionService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -62,7 +64,7 @@ public class ModifierController implements Initializable {
     @FXML
     private TextField MaxParticipants;
     @FXML
-    private ComboBox<?> region_id;
+    private ComboBox<String> region_id;
     @FXML
     private Button retourevent;
     @FXML
@@ -88,6 +90,9 @@ public class ModifierController implements Initializable {
     private TableColumn<Evenement, String> image1;
 public ObservableList<Evenement> data = FXCollections.observableArrayList();
 EvenementService s = new EvenementService () ;
+
+public ObservableList<String> data2 = FXCollections.observableArrayList();
+RegionService p = new RegionService () ;
     /**
      * Initializes the controller class.
      */
@@ -116,6 +121,9 @@ EvenementService s = new EvenementService () ;
             System.out.println(data);
             Evenement.setItems(data);
             System.out.println(data);
+            data2 = p.indexActionRliste();
+            
+            region_id.setItems(data2);
         } catch (SQLException ex) {
             Logger.getLogger(AfficherAllController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,14 +140,18 @@ EvenementService s = new EvenementService () ;
           Evenement c2 = Evenement.getSelectionModel().getSelectedItem();
             int id_ev = c2.getId();
             
-            
-            cs.modifierEvenement(id_ev, Duree.getText(), Gagnant.getText(),nomevent.getText(),image.getText(),Date_d.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),Date_f.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) ,Integer.parseInt(MaxParticipants.getText()),Integer.parseInt(Etat.getText()));
+            if (validateInputs()){
+                String region_id1 = region_id.getSelectionModel().getSelectedItem();
+        
+            int a = cs.chercherregion(region_id1) ;
+            cs.modifierEvenement(id_ev, Duree.getText(), Gagnant.getText(),nomevent.getText(),image.getText(),Date_d.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),Date_f.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")) ,Integer.parseInt(MaxParticipants.getText()),Integer.parseInt(Etat.getText()),a);
            
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Information Dialog");
             alert.setHeaderText(null);
             alert.setContentText("Evenement modifié");
             alert.showAndWait();
+            
             try {
             javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("AfficherAll.fxml"));
             Scene sceneview = new Scene(tableview);
@@ -153,6 +165,7 @@ EvenementService s = new EvenementService () ;
         catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+            }
     }
 @FXML
     void select() {
@@ -165,8 +178,8 @@ EvenementService s = new EvenementService () ;
         Duree.setText(selected.getDuree());  
         Etat.setText(String.valueOf(selected.getEtat()));
         MaxParticipants.setText(String.valueOf(selected.getMaxParticipants()));
-        //Date_f.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        //Date_d.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        Date_d.setValue(java.time.LocalDate.now());
+        Date_f.setValue(java.time.LocalDate.now());
         Gagnant.setText(selected.getGagnant());
          image.setText(selected.getImage());
          
@@ -190,5 +203,63 @@ EvenementService s = new EvenementService () ;
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(uploadPage, 861, 731));
     }
-    
+    public static boolean isNotInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException | NullPointerException e) {
+            return true;
+        }
+
+        return false;
+    }
+public boolean validateInputs() {
+        if (nomevent.getText().length() == 0 || Duree.getText().length() == 0
+                ) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Champ vide !");
+            alert.showAndWait();
+            return false;
+        } else if (isNotInteger(Etat.getText()) || isNotInteger(MaxParticipants.getText())) {
+
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("champ Etat/Maxparticipants : Entrez des chiffres pas autre chose");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+
+        }
+        else if ((Integer) Integer.parseInt(Etat.getText()) + 0 !=0 && (Integer) Integer.parseInt(Etat.getText()) + 0 !=1)
+        {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Champ Etat doit être égale à 0 ou 1");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+        }
+        else if (Date_d.getValue().compareTo(Date_f.getValue())>=0   || Date_d.getValue().compareTo(java.time.LocalDate.now())<0)
+        {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Champ date corrompu : date de début sup à la date de fin et sup à la date actuelle !   ");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+            
+        }
+        else if ((Integer) Integer.parseInt(MaxParticipants.getText()) + 0 <0)
+        {
+             Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Champ MaxParticipants ne doit pas être négatif");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+        }
+         return true;
+}
 }

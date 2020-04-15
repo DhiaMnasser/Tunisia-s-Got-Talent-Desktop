@@ -18,7 +18,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import tgt.MyDbConnection;
-
+import Entities.Region;
 /**
  *
  * @author Achraf
@@ -40,17 +40,17 @@ public class EvenementService {
     }
 
     public void ajouterEvenement2(Evenement e) throws SQLException {
-        String req = "INSERT INTO `evenement` (`Duree`, `Gagnant`,`nomevent`,`image`,`Date_d` ,`Date_f`, `MaxParticipants`,`Etat`) VALUES ( ?,?,?,?,?,?,?,?) ";
+        String req = "INSERT INTO `evenement` (`Duree`, `Gagnant`,`nomevent`,`image`,`Date_d` ,`Date_f`, `MaxParticipants`,`Etat`,`region_id`) VALUES ( ?,?,?,?,?,?,?,?,?) ";
         PreparedStatement pstm = connexion.prepareStatement(req);
         pstm.setString(1, e.getDuree());
         pstm.setString(2, e.getGagnant());
         pstm.setString(3, e.getNomevent());
         pstm.setString(4, e.getImage());
         pstm.setString(5,  e.getDate_d());
-        pstm.setString(6, e.getDate_d());
+        pstm.setString(6, e.getDate_f());
         pstm.setInt(7, e.getMaxParticipants());
         pstm.setInt(8, e.getEtat());
-       
+       pstm.setInt(9, e.getRegion_id());
         
         pstm.executeUpdate();
     }
@@ -64,7 +64,7 @@ public class EvenementService {
     }
     
     
-  public void modifierEvenement(int id, String Duree, String Gagnant, String nomevent, String image,String Date_d ,String Date_f, int MaxParticipants, int Etat) throws SQLException {
+  public void modifierEvenement(int id, String Duree, String Gagnant, String nomevent, String image,String Date_d ,String Date_f, int MaxParticipants, int Etat,int region_id) throws SQLException {
         String req = "UPDATE `evenement` SET  Duree='"+Duree
                                +"', Gagnant='"+Gagnant
                                +"', nomevent='"+nomevent
@@ -73,7 +73,7 @@ public class EvenementService {
                                +"',Date_f='"+Date_f
                                +"',MaxParticipants='"+MaxParticipants 
                                +"',Etat='"+Etat 
-                               
+                               +"',region_id='"+region_id
                                + "' WHERE id="+id;
         Statement pstm = connexion.createStatement();
        pstm.executeUpdate(req);
@@ -168,5 +168,21 @@ public class EvenementService {
         
         
      }
+      public int chercherregion(String s ) throws SQLException
+    {
+        String req= "  select id from region where Nom= '"+s+"'";
+        
+        Statement pstm = connexion.createStatement();
+       ResultSet rst = pstm.executeQuery(req);
+       
+       rst.last();
+       int nbrRow=rst.getRow();
+       if (nbrRow != 0 )
+       {
+           int a = rst.getInt("id") ;
+           return a ;}
+       return 0 ;
+       
+    }
     
 }

@@ -6,12 +6,18 @@
 package Controllers;
 
 import Entities.Evenement;
+import Entities.Region;
 import Services.EvenementService;
+import Services.RegionService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +33,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -58,7 +65,7 @@ public class AjoutController implements Initializable {
     @FXML
     private TextField MaxParticipants;
     @FXML
-    private ComboBox<?> region_id;
+    private ComboBox<String> region_id;
     @FXML
     private Button retourevent;
     @FXML
@@ -83,19 +90,31 @@ public class AjoutController implements Initializable {
     private TableColumn<?, ?> region_id1;
     @FXML
     private TableColumn<?, ?> image1;
-
+public ObservableList<String> data = FXCollections.observableArrayList();
+RegionService s = new RegionService () ;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+       
+        try {
+            
+            data = s.indexActionRliste();
+            
+            region_id.setItems(data);
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(AfficherAllController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
     
     
     @FXML
     private void ajouter(ActionEvent event) throws SQLException, IOException {   
-        
+        if (validateInputs())
+        {
         String nomevent1 = nomevent.getText() ;
           int Etat1 = (Integer) Integer.parseInt(Etat.getText()) + 0;
           int MaxParticipants1 = (Integer) Integer.parseInt(MaxParticipants.getText()) + 0;
@@ -108,9 +127,14 @@ public class AjoutController implements Initializable {
       
        
         EvenementService cs = new EvenementService();
-        Evenement c = new Evenement (nomevent1,duree1,gagnant1,image1,Date_d1,Date_f1,MaxParticipants1,Etat1);
+        String region_id1 = region_id.getSelectionModel().getSelectedItem();
+        
+        int a = cs.chercherregion(region_id1) ;
+        
+        Evenement c = new Evenement (nomevent1,duree1,gagnant1,image1,Date_d1,Date_f1,MaxParticipants1,Etat1,a);
         cs.ajouterEvenement2(c);
-        System.out.println("Event ajouté"); 
+        System.out.println("Event ajouté");
+        new Alert(Alert.AlertType.INFORMATION, "Evénement Ajouté !").show();
         try {
             javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("AfficherAll.fxml"));
             Scene sceneview = new Scene(tableview);
@@ -124,6 +148,7 @@ public class AjoutController implements Initializable {
         catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+        }
     }
     public static boolean isNotInteger(String s) {
         try {
@@ -134,7 +159,7 @@ public class AjoutController implements Initializable {
 
         return false;
     }
-private boolean validateInputs() {
+public boolean validateInputs() {
         if (nomevent.getText().length() == 0 || Duree.getText().length() == 0
                 ) {
 
@@ -148,11 +173,39 @@ private boolean validateInputs() {
 
             Alert alert1 = new Alert(Alert.AlertType.WARNING);
             alert1.setTitle("Erreur");
-            alert1.setContentText("Entrez des chiffres pas autre chose");
+            alert1.setContentText("champ Etat/Maxparticipants : Entrez des chiffres pas autre chose");
             alert1.setHeaderText(null);
             alert1.show();
             return false;
 
+        }
+        else if ((Integer) Integer.parseInt(Etat.getText()) + 0 !=0 && (Integer) Integer.parseInt(Etat.getText()) + 0 !=1)
+        {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Champ Etat doit être égale à 0 ou 1");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+        }
+        else if (Date_d.getValue().compareTo(Date_f.getValue())>=0   || Date_d.getValue().compareTo(java.time.LocalDate.now())<0)
+        {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Champ date corrompu : date de début sup à la date de fin et sup à la date actuelle !   ");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+            
+        }
+        else if ((Integer) Integer.parseInt(MaxParticipants.getText()) + 0 <0)
+        {
+             Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Champ MaxParticipants ne doit pas être négatif");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
         }
          return true;
 }

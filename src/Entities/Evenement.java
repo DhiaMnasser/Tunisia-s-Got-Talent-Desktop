@@ -66,7 +66,20 @@ public Evenement (String nomevent, String Duree,int etat)
         this.MaxParticipants = MaxParticipants;
         this.Etat = Etat;
     }
-
+public Evenement (String nomevent,String Duree, String Gagnant, String image, String Date_d, String Date_f, int MaxParticipants, int Etat,int region_id)
+    {
+        
+    this.nomevent=nomevent ;
+    this.Duree = Duree;
+        this.Gagnant = Gagnant;
+        
+        this.image = image;
+        this.Date_d = Date_d;
+        this.Date_f = Date_f;
+        this.MaxParticipants = MaxParticipants;
+        this.Etat = Etat;
+        this.region_id = region_id;
+    }
     public Evenement(String Duree, String Gagnant,String nomevent, String image) {
         this.Duree = Duree;
         this.Gagnant = Gagnant;

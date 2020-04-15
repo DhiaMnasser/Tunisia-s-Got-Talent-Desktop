@@ -118,6 +118,8 @@ public class RegionService {
 
       }
       }
+      
+      
       public ObservableList<Region> indexActionR() throws SQLException 
      { 
         ObservableList<Region> Regions=FXCollections.observableArrayList();
@@ -129,6 +131,23 @@ public class RegionService {
             while(result.next())
             {    Region p = new Region(result.getInt(1),result.getString("Nom"),result.getInt("Nb_villes"));
             Regions.add(p);
+                    }
+        
+          return  Regions;
+        
+        
+     }
+    public ObservableList<String> indexActionRliste() throws SQLException 
+     { 
+        ObservableList<String> Regions=FXCollections.observableArrayList();
+        String req= "  select Nom from region";
+        Statement st;
+        
+            st=connexion.createStatement();
+            ResultSet result=st.executeQuery(req);
+            while(result.next())
+            {   String s=result.getString("Nom");
+            Regions.add(s);
                     }
         
           return  Regions;

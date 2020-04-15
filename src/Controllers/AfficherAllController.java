@@ -161,6 +161,7 @@ EvenementService s = new EvenementService () ;
         if(Evenement.getSelectionModel().getSelectedItems().size()!=0) {
            
            s.supprimerEvenement(Evenement.getSelectionModel().getSelectedItems().get(0).getId());
+           new Alert(Alert.AlertType.INFORMATION, "Evénement supprimé !").show();
              try {
             javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("afficherAll.fxml"));
             Scene sceneview = new Scene(tableview);
@@ -194,6 +195,7 @@ EvenementService s = new EvenementService () ;
         if(Evenement.getSelectionModel().getSelectedItems().size()!=0) {
            
            s.BloquerEvenement(Evenement.getSelectionModel().getSelectedItems().get(0).getId());
+           new Alert(Alert.AlertType.INFORMATION, "Evénement bloqué !").show();
              try {
             javafx.scene.Parent tableview = FXMLLoader.load(getClass().getResource("afficherAll.fxml"));
             Scene sceneview = new Scene(tableview);

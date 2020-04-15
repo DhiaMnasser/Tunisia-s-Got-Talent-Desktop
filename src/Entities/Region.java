@@ -13,6 +13,15 @@ public class Region {
      private int id;
     private String Nom;
     private int Nb_villes;
+    private int event_id ;
+
+    public void setEvent_id(int event_id) {
+        this.event_id = event_id;
+    }
+
+    public int getEvent_id() {
+        return event_id;
+    }
     
     /*************************************************/
 
@@ -23,6 +32,18 @@ public class Region {
         this.id = id;
         this.Nom = Nom;
         this.Nb_villes = Nb_villes;
+    }
+    public Region(int id, String Nom, int Nb_villes,int event_id) {
+        this.id = id;
+        this.Nom = Nom;
+        this.Nb_villes = Nb_villes;
+        this.event_id = event_id;
+    }
+    
+    public Region( String Nom) {
+       
+        this.Nom = Nom;
+      
     }
 
     public Region(String Nom, int Nb_villes) {

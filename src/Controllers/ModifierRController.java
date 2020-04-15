@@ -92,7 +92,7 @@ RegionService s = new RegionService () ;
           Region c2 = table.getSelectionModel().getSelectedItem();
             int id_ev = c2.getId();
             
-            
+            if (validateInputs()){
             cs.modifierRegion(id_ev, Nom.getText() ,Integer.parseInt(Nb_villes.getText()));
            
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -113,6 +113,7 @@ RegionService s = new RegionService () ;
         catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+            }
     }
 @FXML
     void selectR() {
@@ -146,5 +147,45 @@ RegionService s = new RegionService () ;
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(uploadPage, 861, 731));
     }
-    
+    public static boolean isNotInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch (NumberFormatException | NullPointerException e) {
+            return true;
+        }
+
+        return false;
+    }
+public boolean validateInputs() {
+        if (Nom.getText().length() == 0 
+                ) {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Champ vide !");
+            alert.showAndWait();
+            return false;
+        } else if (isNotInteger(Nb_villes.getText()) ) {
+
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("champ Nb_villes : Entrez des chiffres pas autre chose");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+
+        }
+        else if ((Integer) Integer.parseInt(Nb_villes.getText()) + 0 <0 )
+        {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING);
+            alert1.setTitle("Erreur");
+            alert1.setContentText("Champ Nb_villes ne doit pas être négatif");
+            alert1.setHeaderText(null);
+            alert1.show();
+            return false;
+        }
+        
+         return true;
+}
 }
