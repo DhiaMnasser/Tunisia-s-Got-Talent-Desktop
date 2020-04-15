@@ -53,8 +53,6 @@ public class AdminConsulterCommandeController implements Initializable {
     @FXML
     private TableColumn<LigneCommande, Integer> col_quantite;
     @FXML
-    private TableColumn<LigneCommande, Integer> col_prix;
-    @FXML
     private Label openHomeBtn;
     @FXML
     private Label openStoreBtn;
@@ -70,6 +68,8 @@ public class AdminConsulterCommandeController implements Initializable {
     private Text etat;
     @FXML
     private Text tel;
+    @FXML
+    private Text prixTotal;
 
     /**
      * Initializes the controller class.
@@ -81,6 +81,17 @@ public class AdminConsulterCommandeController implements Initializable {
 
     @FXML
     private void openHome(MouseEvent event) {
+         try {
+
+            Parent commandePage = FXMLLoader.load(getClass().getResource("/tgt/Views/AdminMain.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(commandePage));
+            stage.setTitle("Admin : Main");
+
+        } catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @FXML

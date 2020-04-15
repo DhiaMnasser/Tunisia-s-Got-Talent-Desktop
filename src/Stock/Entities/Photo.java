@@ -10,6 +10,10 @@ import java.util.*;
 import tgt.MyDbConnection;
 import Stock.Services.ProduitService;
 
+/**
+ *
+ * @author Haddad
+ */
 
 public class Photo {
     private int Id_Photo;

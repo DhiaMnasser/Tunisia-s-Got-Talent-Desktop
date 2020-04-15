@@ -10,29 +10,35 @@ import static java.sql.Types.FLOAT;
 import java.util.*;
 import tgt.MyDbConnection;
 import Stock.Services.ProduitService;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
- * @author DELL
+ * @author Haddad
  */
 public class Produit {
-
+    Connection cnx;
     private int Id_Produit;
     private String Nom_Produit;
+    private int Id_Categorie;
     private int Quantite_Totale ;
     private float Prix_Produit;
     private String Etat_Produit;
     private String Taille_Produit;
-    private int Id_Categorie;
-
-    public Produit(int Id_Produit, String Nom_Produit, int Quantite_Totale, float Prix_Produit, String Etat_Produit, String Taille_Produit, int Id_Categorie) {
+    private String Url;
+    
+    public Produit(int Id_Produit, String Nom_Produit,int Id_Categorie, int Quantite_Totale, float Prix_Produit, String Etat_Produit, String Taille_Produit,String Url) {
         this.Id_Produit = Id_Produit;
         this.Nom_Produit = Nom_Produit;
+        this.Id_Categorie = Id_Categorie;
         this.Quantite_Totale = Quantite_Totale;
         this.Prix_Produit = Prix_Produit;
         this.Etat_Produit = Etat_Produit;
         this.Taille_Produit = Taille_Produit;
-        this.Id_Categorie = Id_Categorie;
+        this.Url = Url;
     }
     
     
@@ -100,6 +106,27 @@ public class Produit {
         this.Id_Categorie = Id_Categorie;
     }
 
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String Url) {
+        this.Url = Url;
+    }
+    
+    /*public String getNCat(int id) throws SQLException {
+          String p = null;
+          Statement stm = cnx.createStatement();
+          String requete = " SELECT nomc FROM `categorie` WHERE `id`= '"+id+"'" ;
+          ResultSet rst = stm.executeQuery(requete);
+            if (rst.next())
+            {p=rst.getString("nomc");
+            }
+        return p ;
+            }*/
+    
+    
+    
     
     @Override
     public boolean equals(Object obj) {
@@ -140,7 +167,7 @@ public class Produit {
 
     @Override
     public String toString() {
-        return "Produit : {" + "Id_Produit=" + Id_Produit + ", Name_Produit=" + Nom_Produit + ", Quantite_Totale=" + Quantite_Totale + ", Prix_Produit=" + Prix_Produit + ", Etat_Product=" + Etat_Produit + ", Taille_Porduit=" + Taille_Produit + ", Id_Categorie=" + Id_Categorie + '}' + "\n";
+        return "Produit : {" + "Id_Produit=" + Id_Produit + ", Id_Categorie=" + Id_Categorie+ ", Name_Produit=" + Nom_Produit + ", Quantite_Totale=" + Quantite_Totale + ", Prix_Produit=" + Prix_Produit + ", Etat_Product=" + Etat_Produit + ", Taille_Porduit=" + Taille_Produit + ", Url=" + Url+ '}' + "\n";
     }
 
 

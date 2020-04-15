@@ -43,7 +43,8 @@ public class CheckoutController implements Initializable {
 
     //  TODO complete the connected user
     int currentUser = 12;
-    String add, tt;
+    String userMail = "mohameddhia.mnasser@esprit.tn";
+    
 
     @FXML
     private TextField tel;
@@ -52,13 +53,7 @@ public class CheckoutController implements Initializable {
     @FXML
     private AnchorPane anc;
     @FXML
-    private Label openHomeBtn;
-    @FXML
-    private Label openPanierBtn;
-    @FXML
-    private Label openStoreBtn;
-    @FXML
-    private Label openCommandeBtn;
+    private JFXButton openPanierBtn;
     @FXML
     private JFXTextField numeroCarte;
     @FXML
@@ -102,6 +97,8 @@ public class CheckoutController implements Initializable {
 
         commandeController.ajouterCommande(panier, address.getText(), tel.getText());
         System.out.println("ajouterCommande is called");
+        tgt.Entities.SendEmailTLS.sendCommandeConfrimationMail(userMail,panier);
+
 
     }
 
@@ -118,8 +115,6 @@ public class CheckoutController implements Initializable {
         }
     }
 
-    @FXML
-
     private void openStore(MouseEvent event) {
         try {
             Parent storePage = FXMLLoader.load(getClass().getResource("/Stock/Services/Produit.fxml"));
@@ -130,8 +125,6 @@ public class CheckoutController implements Initializable {
             Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    @FXML
 
     private void openHome(MouseEvent event) {
         try {
@@ -144,9 +137,7 @@ public class CheckoutController implements Initializable {
         }
     }
 
-    @FXML
-
-    private void openCommande(MouseEvent event) {
+    private void openCommande(ActionEvent event) {
         try {
             Parent commandePage = FXMLLoader.load(getClass().getResource("/Achat/Views/Commande.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -169,7 +160,7 @@ public class CheckoutController implements Initializable {
             Panier panier = pans.getPanierByUser(currentUser);
             System.out.println("payment controller : " + panier);
 
-            String userMail = "aaa@es.tn";
+            
 
             if (tel.getText().length() != 8) {
 
@@ -219,10 +210,7 @@ public class CheckoutController implements Initializable {
                     alert.setContentText("Votre Commande est en Cours de traitement !");
                     alert.setHeaderText(null);
                     alert.showAndWait();
-                    Parent commandePage = FXMLLoader.load(getClass().getResource("/Achat/Views/Commande.fxml"));
-                    anc.getChildren().clear();
-                    anc.getChildren().add(commandePage);
-                    anc.toFront();
+                    openCommande(event);
 
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);

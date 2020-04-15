@@ -11,6 +11,10 @@ import java.util.*;
 import tgt.MyDbConnection;
 import Stock.Services.ProduitService;
 
+/**
+ *
+ * @author Haddad
+ */
 
 public class Categorie {
 

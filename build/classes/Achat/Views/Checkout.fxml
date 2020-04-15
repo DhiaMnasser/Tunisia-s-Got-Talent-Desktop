@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anc" prefHeight="400.0" prefWidth="1154.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.CheckoutController">
+<AnchorPane id="AnchorPane" fx:id="anc" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.CheckoutController">
     <stylesheets>
         <URL value="@/Achat/css/checkout.css" />
     </stylesheets>
@@ -23,49 +23,13 @@
       <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="305.0" style="-fx-background-color: #007FFF;" />
       <Label layoutX="657.0" layoutY="22.0" prefHeight="42.0" prefWidth="137.0" text="Checkout">
          <font>
-            <Font name="Cooper Black" size="27.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
       </Label>
       <Label layoutX="1040.0" layoutY="702.0" prefHeight="31.0" prefWidth="100.0" text="\@copyright tgt2020">
          <font>
             <Font size="9.0" />
          </font>
-      </Label>
-      <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="146.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/home.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openPanierBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="248.0" onMouseClicked="#openPanier" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Panier">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/supermarket.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openStoreBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="360.0" onMouseClicked="#openStore" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Store">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/shop.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openCommandeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="103.0" layoutY="474.0" onMouseClicked="#openCommande" prefHeight="65.0" prefWidth="119.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Commandes">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/paper.png" />
-               </image>
-            </ImageView>
-         </graphic>
       </Label>
       <VBox layoutX="386.0" layoutY="186.0" prefHeight="356.0" prefWidth="693.0">
          <children>
@@ -132,7 +96,7 @@
       </ImageView>
       <Pane layoutX="332.0" layoutY="88.0" prefHeight="58.0" prefWidth="650.0">
          <children>
-            <JFXButton layoutX="21.0" layoutY="11.0" prefHeight="36.0" prefWidth="153.0" style="-fx-background-color: #007FFF;" text="Validation Panier" textFill="WHITE">
+            <JFXButton fx:id="openPanierBtn" layoutX="21.0" layoutY="11.0" onMouseClicked="#openPanier" prefHeight="36.0" prefWidth="153.0" style="-fx-background-color: #007FFF;" text="Validation Panier" textFill="WHITE">
                <font>
                   <Font name="Roboto Medium" size="14.0" />
                </font>

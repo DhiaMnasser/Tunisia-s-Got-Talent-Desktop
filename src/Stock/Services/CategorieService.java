@@ -21,6 +21,10 @@ import tgt.MyDbConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Haddad
+ */
 
 public class CategorieService implements IserviceCategorie{
  Connection cnx;
@@ -32,33 +36,33 @@ public class CategorieService implements IserviceCategorie{
     public void addCategorie(Categorie c) throws SQLException {
         try{    Statement stm=cnx.createStatement();
              String requete= "INSERT INTO `Categorie`"
-                +"(`Nom_Categorie`)"
+                +"(`nomc`)"
                 +  "VALUES ('"+c.getNom_Categorie()+"')";
       stm.executeUpdate(requete);
       
-      System.out.println("😃😈 element inserted 😍 succeeds 😈😃");
+      System.out.println("Element Insr");
         }catch(SQLException ex){}
     }
 
     @Override
     public void deleteCategorie(int id) throws SQLException {
         PreparedStatement pst;
-        String requete = " DELETE FROM `Categorie` WHERE Id_Categorie='"+id+"'" ;
+        String requete = " DELETE FROM `Categorie` WHERE id='"+id+"'" ;
         pst = cnx.prepareStatement(requete);
         Statement ste=cnx.createStatement();
         ste.executeUpdate(requete);
-        System.out.println("😃😈 element deleted 😍 succeeds 😈😃");    }
+        System.out.println("Element Supp");    }
 
     @Override
       public void updateCategorie(Categorie c) throws SQLException {
             PreparedStatement pst;
-            String requete = " UPDATE `Categorie` SET `Nom_Categorie`=? WHERE `Id_Categorie`=?" ;
+            String requete = " UPDATE `Categorie` SET `nomc`=? WHERE `id`=?" ;
             pst = cnx.prepareStatement(requete);
             pst.setString(1,c.getNom_Categorie());
-            pst.setInt(8,c.getId_Categorie());
+            pst.setInt(2,c.getId_Categorie());
 
             pst.executeUpdate();
-      System.out.println("😃😈 element updated 😍 succeeds 😈😃");    
+      System.out.println("Element Upd");    
       }
 
     @Override
@@ -69,11 +73,11 @@ public class CategorieService implements IserviceCategorie{
         List<Categorie> categories = new ArrayList<>();
         while (rst.next()) {
             Categorie c2 = new Categorie();
-            c2.setId_Categorie(rst.getInt("Id_Categorie"));
-            c2.setNom_Categorie(rst.getString("Nom_Categorie"));
+            c2.setId_Categorie(rst.getInt("id"));
+            c2.setNom_Categorie(rst.getString("nomc"));
             categories.add(c2);
         }
-       System.out.println("😃😈 display 😍 succeeds 😈😃");
+       System.out.println("Categorie Rec");
 
      return categories; 
     }
@@ -82,13 +86,13 @@ public class CategorieService implements IserviceCategorie{
     public Categorie getById(int id) throws SQLException {
           Categorie c = null;
           Statement stm = cnx.createStatement();
-          String requete = " SELECT * FROM `Categorie` WHERE `Id_Categorie`= '"+id+"'" ;
+          String requete = " SELECT * FROM `Categorie` WHERE `id`= '"+id+"'" ;
           ResultSet rst = stm.executeQuery(requete);
 
             if (rst.next())
-            {c=new Categorie(rst.getInt("Id_Categorie"),rst.getString("Nom_Categorie")
+            {c=new Categorie(rst.getInt("id"),rst.getString("nomc")
             );}
-                  System.out.println("😃😈 display by id 😍 succeeds 😈😃");
+                  System.out.println("Categorie Par ID");
 
        
         return c ;
@@ -98,17 +102,17 @@ public class CategorieService implements IserviceCategorie{
       public Categorie getByName(String nom) throws SQLException {
       Categorie c = null;
       Statement stm = cnx.createStatement();
-         String requete = " SELECT * FROM `Categorie` WHERE (Nom_Categorie like '"+nom+"%')" ;
+         String requete = " SELECT * FROM `Categorie` WHERE (nomc like '"+nom+"%')" ;
         try {
            
             stm = cnx.createStatement();
             ResultSet rst = stm.executeQuery(requete);
             if (rst.next())
-            c=new Categorie(rst.getInt("Id_Categorie"),rst.getString("Nom_Categorie"));
+            c=new Categorie(rst.getInt("id"),rst.getString("nomc"));
             
                 } catch (SQLException ex) {
         }
-                          System.out.println("😃😈 display by name 😍 succeeds 😈😃");
+                          System.out.println("Categorie Par Nom");
 
         return c ;
     
@@ -117,14 +121,14 @@ public class CategorieService implements IserviceCategorie{
  public List<Categorie> getTrier() throws SQLException {
  List<Categorie> arrcategorie=new ArrayList<>();
  Statement stm = cnx.createStatement();
- String requete = "select * from Categorie ORDER BY Nom_Categorie ASC";
+ String requete = "select * from Categorie ORDER BY nomc ASC";
  ResultSet rst = stm.executeQuery(requete);
 
        
      while (rst.next()) {
          
-         int Id_Categorie=rst.getInt("Id_Categorie");
-         String Nom_Categorie=rst.getString("Nom_Categorie");            
+         int Id_Categorie=rst.getInt("id");
+         String Nom_Categorie=rst.getString("nomc");            
          Categorie a = new Categorie(Id_Categorie, Nom_Categorie);
          arrcategorie.add(a);
         

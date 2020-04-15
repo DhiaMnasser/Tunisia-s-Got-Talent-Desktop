@@ -52,7 +52,6 @@ public class AdminCommandesController implements Initializable {
     private TableColumn<Commande, Date> col_date;
     @FXML
     private TableColumn<Commande, Boolean> col_etat;
-    @FXML
     private TableColumn<Commande, Button> col_actions;
     @FXML
     private Label openHomeBtn;
@@ -65,6 +64,10 @@ public class AdminCommandesController implements Initializable {
 
     Connection connexion;
     ObservableList<Commande> oblist = FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<?, ?> col_adresse;
+    @FXML
+    private TableColumn<?, ?> col_tel;
 
     /**
      * Initializes the controller class.
@@ -104,7 +107,8 @@ public class AdminCommandesController implements Initializable {
         col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        col_actions.setCellValueFactory(new PropertyValueFactory<>("button"));
+        col_adresse.setCellValueFactory(new PropertyValueFactory<>("address"));
+        col_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
         table.setItems(oblist);
     }
 
@@ -114,6 +118,17 @@ public class AdminCommandesController implements Initializable {
 
     @FXML
     private void openHome(MouseEvent event) {
+        
+         try {
+
+            Parent commandePage = FXMLLoader.load(getClass().getResource("/tgt/Views/AdminMain.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(commandePage));
+            stage.setTitle("Admin : Main");
+
+        } catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML

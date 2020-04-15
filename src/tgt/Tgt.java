@@ -11,7 +11,9 @@ import Achat.Services.LigneCommandeService;
 import Achat.Entities.Panier;
 import Achat.Services.CommandeService;
 import Achat.Services.PanierService;
+import Stock.Entities.Categorie;
 import Stock.Entities.Produit;
+import Stock.Services.CategorieService;
 import Stock.Services.ProduitService;
 import java.sql.SQLException;
 
@@ -68,6 +70,33 @@ public class Tgt {
 ////        System.out.println(cs.getCommandeById(188));
 ////        System.out.println(cs.getAllCommandesByUser(12));
 ////        System.out.println(cs.chercherCommande("valide"));
+        
+        //ProduitService pr = new ProduitService();
+        //CategorieService ca = new CategorieService();
+        
+        //Produit p1 = new Produit(0, "tshirt5",1, 1, 1, "Dispo", "m","test");
+        
+        //Categorie c1 = new Categorie(99, "Test");
+        //pr.addProduct(p1);
+        //pr.deleteProduct(35);
+        //pr.updateProduct(p1);
+        //ca.addCategorie(c1);
+        //ca.deleteCategorie(5);
+        //ca.updateCategorie(c1);
+        // ps.ajouterPersonne2(p);
+
+       
+        //System.out.println(pr.getTrier());
+        //System.out.println(ca.getTrier());
+        
+        //System.out.println(pr.getByCat(1));
+        //System.out.println(pr.getById(30));
+        //System.out.println(pr.getByName("SmartL"));
+        //System.out.println(ca.getById(3));
+        //System.out.println(ca.getByName("Acc"));
+
+
+
 
     }
     

@@ -17,11 +17,9 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,22 +29,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import tgt.Controllers.MainController;
 import tgt.MyDbConnection;
 
 /**
@@ -88,6 +81,10 @@ public class CommandeController implements Initializable {
     private Button consulter;
     @FXML
     private AnchorPane anc;
+    @FXML
+    private TableColumn<?, ?> col_adresse;
+    @FXML
+    private TableColumn<?, ?> col_tel;
 
     /**
      * Initializes the controller class.
@@ -126,14 +123,16 @@ public class CommandeController implements Initializable {
 
         }
 
-        col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        col_id.setCellValueFactory(new PropertyValueFactory<>("idPanier"));
         col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         col_etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
+        col_adresse.setCellValueFactory(new PropertyValueFactory<>("address"));
+        col_tel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+
         table.setItems(oblist);
 
     }
 
-    @FXML
     private void rechercherCommandes(ActionEvent event) throws SQLException {
 
         connexion = MyDbConnection.getInstance().getConnexion();
@@ -184,7 +183,7 @@ public class CommandeController implements Initializable {
     @FXML
     private void openStore(MouseEvent event) {
         try {
-            Parent panierPage = FXMLLoader.load(getClass().getResource("/Stock/Services/Produit.fxml"));
+            Parent panierPage = FXMLLoader.load(getClass().getResource("/Stock/Graphique/ProductUser.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(panierPage));
             stage.setTitle("Store");
@@ -219,14 +218,14 @@ public class CommandeController implements Initializable {
 
 //    hethi tji fl controller li fih list ta3 les commande, velo , ....
     @FXML
-    private void consulter(ActionEvent event) {
+    private void consulter(ActionEvent event) throws SQLException {
 
         try {
 
             if (table.getSelectionModel().getSelectedItem() != null) {
 
 //             bch        
-                int idPanier = table.getSelectionModel().getSelectedItem().getIdPanier();
+                Commande commande = table.getSelectionModel().getSelectedItem();
 
 //      na3mel f instance ta3 controller e5er li bch yji fih affichage ta3 ka3ba wa7da w bch tet7at fih methode showCommande() 
                 FXMLLoader consulterLoader = new FXMLLoader(getClass().getResource("/Achat/Views/ConsulterCommande.fxml"));
@@ -234,7 +233,7 @@ public class CommandeController implements Initializable {
                 ConsulterCommandeController ccController = consulterLoader.getController();
 
 //      t3ayet lel fonction showCommande ta3 controller le5er          
-                ccController.showCommande(idPanier, table.getSelectionModel().getSelectedItem());
+                ccController.showCommande(commande);
 
 //      bch thezzek lel interface lo5ra                
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -268,24 +267,45 @@ public class CommandeController implements Initializable {
         System.out.println("cmd ajouter");
         pans.changerEtatPanier(panier);
         pans.addPanier(pan1);
-        System.out.println("new panier assigned to user12");
+        System.out.println("new panier assigned to user" + currentUser);
 
         System.out.println("pdf in commande controller");
 
         try {
-            GeneratePdf pdf = new GeneratePdf(cmd);
+            Achat.Services.GeneratePdf pdf = new GeneratePdf(cmd);
         } catch (DocumentException ex) {
             Logger.getLogger(ConsulterCommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//         try {
-//            Parent commandePage = FXMLLoader.load(getClass().getResource("/Achat/Views/Commande.fxml"));
-//            Stage stage = (Stage) ((Node) MouseEvent.getSource()).getScene().getWindow();
-//            stage.setScene(new Scene(commandePage));
-//            stage.setTitle("Commande");
-//        } catch (IOException ex) {
-//                Logger.getLogger(CheckoutController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+    }
+
+//      public void RechercheAV() {
+//        FilteredList<Commande> filteredData = new FilteredList<>(oblist, b -> true);
+//        rechercher.textProperty().addListener((observable, oldValue, newValue) -> {
+//            filteredData.setPredicate(commande -> {
+//
+//                if (newValue == null || newValue.isEmpty()) {
+//                    return true;
+//                }
+//                String lowerCaseFilter = newValue.toLowerCase();
+//                if ((""+commande.getDate()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+//                    return true;
+//                } else if ((""+commande.getAddress()).indexOf(lowerCaseFilter) != -1) {
+//                    return true;
+//                } else if ((""+commande.getTel()).indexOf(lowerCaseFilter) != -1) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+//            });
+//        });
+//
+//        SortedList<Commande> sortedData = new SortedList<>(filteredData);
+//        sortedData.comparatorProperty().bind(tableview.comparatorProperty());
+//        tableview.setItems(sortedData);
+//    }
+    @FXML
+    private void rechercherCommandes(InputMethodEvent event) {
     }
 
 }

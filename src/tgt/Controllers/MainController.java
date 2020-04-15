@@ -94,16 +94,21 @@ public class MainController implements Initializable {
         }
     }
 
-    @FXML
-    private void openStore(MouseEvent event) {
-         try {
-            Parent panierPage = FXMLLoader.load(getClass().getResource("/Stock/Services/Produit.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(panierPage));
-            stage.setTitle("Store");
-        } catch (IOException ex) {
-                Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+   @FXML
+    private  void openStore(MouseEvent event) throws IOException {
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("/Stock/Graphique/Base.fxml"));
+
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        Scene scene = new Scene(uploadPage);
+        scene.setOnMouseClicked((MouseEvent event1) -> {
+            if (event1.getClickCount() == 2) {
+                stage.setFullScreen(true);
+            }
+        });
+
+        stage.setScene(scene);
+        stage.setTitle("Store");
     }
 
 }

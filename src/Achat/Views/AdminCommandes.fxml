@@ -9,61 +9,35 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1154.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.AdminCommandesController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.AdminCommandesController">
    <stylesheets>
       <URL value="@/Achat/css/commande.css" />
    </stylesheets>
    <children>
-      <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="305.0" style="-fx-background-color: #9933ff;" />
-      <Label layoutX="644.0" layoutY="14.0" prefHeight="42.0" prefWidth="173.0" text="Commandes">
-         <font>
-            <Font name="Cooper Black" size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="1060.0" layoutY="720.0" text="\@copyright tgt2020">
-         <font>
-            <Font size="9.0" />
-         </font>
-      </Label>
-      <TextField fx:id="rechercher" layoutX="320.0" layoutY="116.0" onInputMethodTextChanged="#rechercherCommandes" prefHeight="31.0" prefWidth="320.0" promptText="Rechercher" />
-      <TableView fx:id="table" layoutX="320.0" layoutY="174.0" prefHeight="512.0" prefWidth="817.0">
+        <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/tgtb.png" />
+         </image>
+        </ImageView>
+      <TextField fx:id="rechercher" layoutX="297.0" layoutY="218.0" onInputMethodTextChanged="#rechercherCommandes" prefHeight="31.0" prefWidth="326.0" promptText="Rechercher" />
+      <TableView fx:id="table" layoutX="297.0" layoutY="264.0" prefHeight="392.0" prefWidth="908.0">
          <columns>
-            <TableColumn fx:id="col_id" prefWidth="178.0" text="N Commande" />
-            <TableColumn fx:id="col_date" prefWidth="249.0" text="Date" />
-            <TableColumn fx:id="col_etat" prefWidth="238.0" text="Etat" />
-            <TableColumn fx:id="col_actions" prefWidth="150.0" text="Action" />
+            <TableColumn fx:id="col_id" prefWidth="125.0" text="N Commande" />
+            <TableColumn fx:id="col_date" prefWidth="190.0" text="Date" />
+            <TableColumn fx:id="col_etat" prefWidth="108.0" text="Etat" />
+            <TableColumn fx:id="col_adresse" prefWidth="313.0" text="Adresse" />
+            <TableColumn fx:id="col_tel" prefWidth="171.0" text="Tel" />
          </columns>
       </TableView>
-      <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="124.0" layoutY="145.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/home.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openStoreBtn" alignment="CENTER" contentDisplay="TOP" layoutX="124.0" layoutY="359.0" onMouseClicked="#openStore" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Store">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/shop.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openCommandeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="104.0" layoutY="473.0" onMouseClicked="#openCommande" prefHeight="65.0" prefWidth="119.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Commandes">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/paper.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Button fx:id="consulter" layoutX="1064.0" layoutY="116.0" mnemonicParsing="false" onAction="#consulter" text="consulter" />
+      <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="76.0" layoutY="258.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home" />
+      <Label fx:id="openStoreBtn" alignment="CENTER" contentDisplay="TOP" layoutX="76.0" layoutY="311.0" onMouseClicked="#openStore" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Store" />
+      <Label fx:id="openCommandeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="65.0" layoutY="372.0" onMouseClicked="#openCommande" prefHeight="65.0" prefWidth="119.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Commandes" />
+      <Button fx:id="consulter" layoutX="1124.0" layoutY="218.0" mnemonicParsing="false" onAction="#consulter" text="consulter" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="35.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
+         <image>
+            <Image url="@../Images/paper.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

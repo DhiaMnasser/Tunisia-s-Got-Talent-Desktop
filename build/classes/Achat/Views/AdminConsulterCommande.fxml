@@ -8,90 +8,69 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="747.0" prefWidth="1154.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.AdminConsulterCommandeController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.AdminConsulterCommandeController">
    <stylesheets>
       <URL value="@/Achat/css/commande.css" />
    </stylesheets>
    <children>
-      <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="305.0" style="-fx-background-color: #9933ff;" />
-      <Label layoutX="644.0" layoutY="14.0" prefHeight="42.0" prefWidth="173.0" text="Commande">
-         <font>
-            <Font name="Cooper Black" size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="1060.0" layoutY="720.0" text="\@copyright tgt2020">
-         <font>
-            <Font size="9.0" />
-         </font>
-      </Label>
-      <TableView fx:id="table" layoutX="322.0" layoutY="332.0" prefHeight="347.0" prefWidth="817.0">
+        <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/tgtb.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="table" layoutX="298.0" layoutY="325.0" prefHeight="335.0" prefWidth="901.0">
          <columns>
-            <TableColumn fx:id="col_produit" prefWidth="259.0" text="Produit" />
-            <TableColumn fx:id="col_quantite" prefWidth="279.0" text="Quantite" />
-            <TableColumn fx:id="col_prix" prefWidth="263.0" text="Prix" />
+            <TableColumn fx:id="col_produit" prefWidth="451.0" text="Produit" />
+            <TableColumn fx:id="col_quantite" prefWidth="449.0" text="Quantite" />
          </columns>
       </TableView>
-      <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="145.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/home.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openStoreBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="359.0" onMouseClicked="#openStore" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Store">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/shop.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openCommandeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="103.0" layoutY="473.0" onMouseClicked="#openCommande" prefHeight="65.0" prefWidth="119.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Commandes">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/paper.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label layoutX="350.0" layoutY="135.0" text="Numero Commande :">
+      <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="84.0" layoutY="259.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home" />
+      <Label fx:id="openStoreBtn" alignment="CENTER" contentDisplay="TOP" layoutX="83.0" layoutY="312.0" onMouseClicked="#openStore" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Store" />
+      <Label fx:id="openCommandeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="74.0" layoutY="372.0" onMouseClicked="#openCommande" prefHeight="65.0" prefWidth="119.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Commandes" />
+      <Label layoutX="350.0" layoutY="240.0" text="Numero Commande :">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="253.0" text="Adresse :">
+      <Label layoutX="350.0" layoutY="294.0" text="Adresse :">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="817.0" layoutY="194.0" text="Tel :">
+      <Label layoutX="930.0" layoutY="264.0" text="Tel :">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="350.0" layoutY="194.0" text="Date :">
+      <Label layoutX="350.0" layoutY="266.0" text="Date :">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="817.0" layoutY="132.0" text="Etat :">
+      <Label layoutX="930.0" layoutY="232.0" text="Etat :">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Text fx:id="numCommande" layoutX="570.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
-      <Text fx:id="date" layoutX="421.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
-      <Text fx:id="adresse" layoutX="453.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="413.9999907016754" />
-      <Text fx:id="etat" layoutX="887.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
-      <Text fx:id="tel" layoutX="870.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
-      <Button layoutX="817.0" layoutY="251.0" mnemonicParsing="false" onAction="#validerCommande" text="Valider" />
+      <Text fx:id="numCommande" layoutX="535.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
+      <Text fx:id="date" layoutX="409.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
+      <Text fx:id="adresse" layoutX="431.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="413.9999907016754" />
+      <Text fx:id="etat" layoutX="983.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
+      <Text fx:id="tel" layoutX="972.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="172.99999070167542" />
+      <Button layoutX="708.0" layoutY="203.0" mnemonicParsing="false" onAction="#validerCommande" text="Valider" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="36.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
+         <image>
+            <Image url="@../Images/paper.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="931.0" layoutY="292.0" prefHeight="27.0" prefWidth="94.0" text="Prix Total :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Text fx:id="prixTotal" layoutX="1027.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="118.99999618530273" />
    </children>
 </AnchorPane>

@@ -50,7 +50,7 @@ public class PanierController implements Initializable {
     Text nomProduit;
     LigneCommandeService lcs = new LigneCommandeService();
     PanierService pans = new PanierService();
-    ProduitService pdts = new ProduitService();
+    ProduitService pdts;
 
 //  TODO complete the connected user
     int currentUser = 12;
@@ -77,10 +77,13 @@ public class PanierController implements Initializable {
     private ColumnConstraints rowQte1;
     @FXML
     private ColumnConstraints rowTotal1;
-    @FXML
     private TextField rechercher;
     @FXML
     private AnchorPane anc;
+
+    public PanierController() {
+        this.pdts = new ProduitService();
+    }
 
     /**
      * Initializes the controller class.
@@ -105,6 +108,7 @@ public class PanierController implements Initializable {
                 LigneCommande lc = it.next();
                 System.out.println(lc);
                 Produit pdt = pdts.getById(lc.getIdproduit());
+                System.out.println(pdt);
                 System.out.println("produit : " + pdt);
                 Text pname = new Text("" + lc.getNomProduit());
                 Text pprix = new Text("" + pdt.getPrix_Produit() + " DT");
@@ -267,7 +271,7 @@ public class PanierController implements Initializable {
     @FXML
     private void openStore(MouseEvent event) {
         try {
-            Parent panierPage = FXMLLoader.load(getClass().getResource("/Stock/Services/Produit.fxml"));
+            Parent panierPage = FXMLLoader.load(getClass().getResource("/Stock/Graphique/ProductUser.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(panierPage));
             stage.setTitle("Store");
@@ -301,7 +305,6 @@ public class PanierController implements Initializable {
 
     }
 
-    @FXML
     private void rechercherProduit(ActionEvent event) {
 
         System.out.println("rechercher Produit ");

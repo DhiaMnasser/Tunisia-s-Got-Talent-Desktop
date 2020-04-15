@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Stock.Graphique.CategorieAdminController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/tgtb.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="search" layoutX="968.0" layoutY="87.0" prefHeight="42.0" prefWidth="298.0" promptText="search" />
+      <Button fx:id="addCat" layoutX="917.0" layoutY="555.0" mnemonicParsing="false" onAction="#addCat" text="Add" />
+      <Button fx:id="deleteCat" layoutX="523.0" layoutY="555.0" mnemonicParsing="false" onAction="#deleteCat" text="Delete" />
+      <Label layoutX="714.0" layoutY="229.0" text="Categories :" />
+      <TableView fx:id="tableview" layoutX="421.0" layoutY="267.0" prefHeight="252.0" prefWidth="648.0">
+        <columns>
+            <TableColumn fx:id="tcName_Cat" onEditCommit="#update_Name" prefWidth="647.0" text="NOM CATEGORIE" />
+        </columns>
+      </TableView>
+      <Button fx:id="back" layoutX="280.0" layoutY="62.0" mnemonicParsing="false" onAction="#back" text="BACK" />
+    <Hyperlink layoutX="83.0" layoutY="276.0" onAction="#home" text="HOME">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink layoutX="68.0" layoutY="327.0" onAction="#prod" text="PRODUCTS">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink layoutX="66.0" layoutY="387.0" onAction="#cat" text="CATEGORIES">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Hyperlink>
+   </children>
+  
+</AnchorPane>

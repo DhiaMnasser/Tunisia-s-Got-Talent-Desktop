@@ -10,6 +10,10 @@ import java.sql.SQLException;
 import java.util.List;
 
 
+/**
+ *
+ * @author Haddad
+ */
  
  public interface IserviceProduit {
     public void addProduct(Produit p)throws SQLException;

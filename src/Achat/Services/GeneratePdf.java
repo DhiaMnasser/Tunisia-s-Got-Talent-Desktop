@@ -27,17 +27,18 @@ public class GeneratePdf {
     LigneCommandeService lcs = new LigneCommandeService();
     CommandeService cmds =new CommandeService();
     
-    Commande cmd = new Commande();
+    Commande c = new Commande();
     List<LigneCommande> LigneCommandes = new ArrayList<>();
 
     
 
-    public GeneratePdf(Commande c) throws DocumentException {
-        cmd = c ;
+    public GeneratePdf(Commande cmd) throws DocumentException {
+        
+        
         try {
             LigneCommandes = lcs.getLigneCommandesByPanier(cmd.getIdPanier());
             System.out.println("pdf source");
-
+            
             String fileName = "D:\\9raya @_@ !\\3eme annee\\semestre 2\\PI Dev\\JAVA\\tgttest\\tgt\\src\\Pdf_commandes\\cmd"+cmd.getIdPanier()+".pdf";
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(fileName));
@@ -68,9 +69,7 @@ public class GeneratePdf {
             document.close();
             
             
-        } catch (SQLException ex) {
-            Logger.getLogger(GeneratePdf.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FileNotFoundException ex) {
+        } catch (SQLException | FileNotFoundException ex) {
             Logger.getLogger(GeneratePdf.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -78,26 +77,6 @@ public class GeneratePdf {
     
     
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws DocumentException {
-        try {
-            // TODO code application logic here
-            String fileName = "D:\\9raya @_@ !\\3eme annee\\semestre 2\\PI Dev\\JAVA\\tgttest\\tgt\\src\\Pdf_commandes";
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(fileName));
-            
-            document.open();
-            
-            Paragraph para = new Paragraph("this is for testing ") ;
-            document.add(para);
-            
-            document.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(GeneratePdf.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+  
     
 }

@@ -15,23 +15,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anc" prefHeight="747.0" prefWidth="1154.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.PanierController">
+<AnchorPane id="AnchorPane" fx:id="anc" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Achat.Controllers.PanierController">
    <stylesheets>
       <URL value="@/Achat/css/commande.css" />
    </stylesheets>
    <children>
-      <Pane layoutX="-2.0" prefHeight="747.0" prefWidth="305.0" style="-fx-background-color: #007FFF;" />
-      <Label layoutX="685.0" layoutY="16.0" prefHeight="42.0" prefWidth="92.0" text="Panier">
-         <font>
-            <Font name="Cooper Black" size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="1060.0" layoutY="720.0" text="\@copyright tgt2020">
-         <font>
-            <Font size="9.0" />
-         </font>
-      </Label>
-      <Button fx:id="checkoutBtn" layoutX="850.0" layoutY="643.0" mnemonicParsing="false" onMouseClicked="#openCheckout" prefHeight="42.0" prefWidth="238.0" style="-fx-background-color: #007FFF; -fx-font-size: 20px;" text="Passer la commande" textFill="WHITE" />
+        <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/tgtb.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="checkoutBtn" layoutX="854.0" layoutY="623.0" mnemonicParsing="false" onMouseClicked="#openCheckout" prefHeight="42.0" prefWidth="238.0" style="-fx-background-color: #007FFF; -fx-font-size: 20px;" text="Passer la commande" textFill="WHITE" />
       <Text layoutX="853.0" layoutY="599.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :" wrappingWidth="106.9999940097332">
          <font>
             <Font size="36.0" />
@@ -42,43 +36,11 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="146.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/home.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openPanierBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="248.0" onMouseClicked="#openPanier" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Panier">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/supermarket.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openStoreBtn" alignment="CENTER" contentDisplay="TOP" layoutX="123.0" layoutY="360.0" onMouseClicked="#openStore" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Store">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/shop.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Label fx:id="openCommandeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="103.0" layoutY="474.0" onMouseClicked="#openCommande" prefHeight="65.0" prefWidth="119.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Commandes">
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
-               <image>
-                  <Image url="@../Images/paper.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Label>
-      <Pane layoutX="334.0" layoutY="179.0" prefHeight="47.0" prefWidth="720.0">
+      <Label fx:id="openHomeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="83.0" layoutY="259.0" onMouseClicked="#openHome" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Home" />
+      <Label fx:id="openPanierBtn" alignment="CENTER" contentDisplay="TOP" layoutX="83.0" layoutY="372.0" onMouseClicked="#openPanier" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Panier" />
+      <Label fx:id="openStoreBtn" alignment="CENTER" contentDisplay="TOP" layoutX="83.0" layoutY="313.0" onMouseClicked="#openStore" prefHeight="65.0" prefWidth="80.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Store" />
+      <Label fx:id="openCommandeBtn" alignment="CENTER" contentDisplay="TOP" layoutX="67.0" layoutY="427.0" onMouseClicked="#openCommande" prefHeight="65.0" prefWidth="119.0" styleClass="menu_item" stylesheets="@../css/commande.css" text="Commandes" />
+      <Pane layoutX="334.0" layoutY="257.0" prefHeight="47.0" prefWidth="720.0">
          <children>
             <Label layoutX="101.0" layoutY="14.0" text="Produit">
                <font>
@@ -102,16 +64,16 @@
             </Label>
          </children>
       </Pane>
-      <HBox layoutX="334.0" layoutY="244.0" prefHeight="244.0" prefWidth="807.0">
+      <HBox layoutX="350.0" layoutY="315.0" prefHeight="244.0" prefWidth="822.0">
          <children>
             <GridPane fx:id="grid" alignment="CENTER" prefHeight="248.0" prefWidth="726.0" vgap="5.0">
                <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="44.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="45.0" />
-                  <ColumnConstraints fx:id="rowProduit1" hgrow="SOMETIMES" maxWidth="254.0" minWidth="10.0" prefWidth="116.0" />
-                  <ColumnConstraints fx:id="rowPrix1" hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="134.0" />
-                  <ColumnConstraints fx:id="rowQte1" hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="196.0" />
-                  <ColumnConstraints fx:id="rowTotal1" hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="179.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="33.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="36.0" />
+                  <ColumnConstraints fx:id="rowProduit1" hgrow="SOMETIMES" maxWidth="254.0" minWidth="10.0" prefWidth="135.0" />
+                  <ColumnConstraints fx:id="rowPrix1" hgrow="SOMETIMES" maxWidth="231.0" minWidth="10.0" prefWidth="176.0" />
+                  <ColumnConstraints fx:id="rowQte1" hgrow="SOMETIMES" maxWidth="261.0" minWidth="10.0" prefWidth="168.0" />
+                  <ColumnConstraints fx:id="rowTotal1" hgrow="SOMETIMES" maxWidth="252.0" minWidth="10.0" prefWidth="126.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="52.0" />
                </columnConstraints>
                <rowConstraints>
@@ -132,5 +94,15 @@
             <Font size="36.0" />
          </font>
       </Text>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="31.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
+         <image>
+            <Image url="@../Images/supermarket.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="32.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true" styleClass="menu_item">
+         <image>
+            <Image url="@../Images/paper.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

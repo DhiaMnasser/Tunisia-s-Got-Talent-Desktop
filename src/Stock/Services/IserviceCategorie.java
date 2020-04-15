@@ -9,6 +9,12 @@ import Stock.Entities.Categorie;
 import java.sql.SQLException;
 import java.util.List;
 
+
+/**
+ *
+ * @author Haddad
+ */
+
 public interface IserviceCategorie {
     public void addCategorie(Categorie p)throws SQLException;
     public void deleteCategorie(int id)throws SQLException;
