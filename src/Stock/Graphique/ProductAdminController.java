@@ -169,7 +169,7 @@ public class ProductAdminController implements Initializable {
              Produit p = SingleDemandes.get(0);
              ProduitService SP = new ProduitService(); 
              Alert alert=new Alert(AlertType.CONFIRMATION);
-             alert.setTitle("confirmation delete");
+             alert.setTitle("confirmation delete : "+p.getNom_Produit());
              alert.setHeaderText("this confirmation about delet");
              alert.setContentText("are you sure to delete??");
              Optional<ButtonType> result=alert.showAndWait();
@@ -178,6 +178,8 @@ public class ProductAdminController implements Initializable {
                SingleDemandes.forEach(allProducts::remove);
              }else{System.out.println("Cancel");}  
              RechercheAV(); }
+    
+    
      public void RechercheAV(){
        FilteredList<Produit> filteredData = new FilteredList<>(listproduct, b -> true);
 		

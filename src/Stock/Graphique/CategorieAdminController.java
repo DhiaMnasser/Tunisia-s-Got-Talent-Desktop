@@ -136,19 +136,20 @@ public class CategorieAdminController implements Initializable {
     }
     @FXML
       private void deleteCat() throws SQLException,AWTException {   
-          tableview.setItems(listcat);
+             tableview.setItems(listcat);
              ObservableList<Categorie> allCats,SingleDemandes ;
              allCats=tableview.getItems();
+             tableview.getSelectionModel().clearSelection(0, tcName_Cat);
              SingleDemandes=tableview.getSelectionModel().getSelectedItems();
-             Categorie p = SingleDemandes.get(0);
-             CategorieService SP = new CategorieService(); 
+             Categorie c = SingleDemandes.get(0);
+             CategorieService SC = new CategorieService(); 
              Alert alert=new Alert(AlertType.CONFIRMATION);
-             alert.setTitle("confirmation delete");
-             alert.setHeaderText("this confirmation about delet");
+             alert.setTitle("confirmation delete : "+c.getNom_Categorie());
+             alert.setHeaderText("this confirmation about delete");
              alert.setContentText("are you sure to delete??");
              Optional<ButtonType> result=alert.showAndWait();
              if(result.get()==ButtonType.OK){
-               SP.deleteCategorie(p.getId_Categorie());
+               SC.deleteCategorie(c.getId_Categorie());
                SingleDemandes.forEach(allCats::remove);
              }else{System.out.println("Cancel");}           
              RechercheAV(); }

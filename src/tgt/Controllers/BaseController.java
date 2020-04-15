@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Stock.Graphique;
+package tgt.Controllers;
 
+import Achat.Controllers.CommandeController;
+import Stock.Graphique.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -40,39 +42,49 @@ public class BaseController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    
     @FXML
     private void Admin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Stock/Graphique/ProductAdmin.fxml")) ;
-        Parent root = loader.load();
-        Scene ascene = new Scene(root);
-        Stage astage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        astage.setScene(ascene);
-        astage.show();
+        
+        
+        try {
+            Parent panierPage = FXMLLoader.load(getClass().getResource("/tgt/Views/AdminMain.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(panierPage));
+            stage.setTitle("Admin");
+        } catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
     //loadPage("AdminController");
     }
 
     @FXML
     private void User(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Stock/Graphique/ProductUser.fxml")) ;
-        Parent root = loader.load();
-        Scene ascene = new Scene(root);
-        Stage astage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        astage.setScene(ascene);
-        astage.show();
-       // loadPage("StoreController");
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/tgt/Views/main.fxml"));
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("User");
+        } catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
-    @FXML
     private void home(ActionEvent event) throws IOException,SQLException {
-       FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/tgt/Views/main.fxml")) ;
-        Parent root = loader.load();
-        Scene ascene = new Scene(root);
-        Stage astage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        astage.setScene(ascene);
-        astage.show();
+        try {
+            Parent panierPage = FXMLLoader.load(getClass().getResource("/tgt/Views/Base.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(panierPage));
+            stage.setTitle("home");
+        } catch (IOException ex) {
+            Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     /*private void loadPage(String page){
                            

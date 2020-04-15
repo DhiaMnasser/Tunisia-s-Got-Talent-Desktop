@@ -15,10 +15,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 
 public class MainController implements Initializable {
@@ -29,6 +31,8 @@ public class MainController implements Initializable {
     private ImageView commandeBtn;
     @FXML
     private Circle openStore;
+    @FXML
+    private ImageView openBase;
 
 
 
@@ -96,7 +100,7 @@ public class MainController implements Initializable {
 
    @FXML
     private  void openStore(MouseEvent event) throws IOException {
-        Parent uploadPage= FXMLLoader.load(getClass().getResource("/Stock/Graphique/Base.fxml"));
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("/Stock/Graphique/ProductUser.fxml"));
 
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
@@ -110,5 +114,18 @@ public class MainController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Store");
     }
+    
+    @FXML
+    private void openBase(MouseEvent event) throws IOException,SQLException {
+       FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/tgt/Views/Base.fxml")) ;
+        Parent root = loader.load();
+        Scene ascene = new Scene(root);
+        Stage astage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        astage.setScene(ascene);
+        astage.show();
+    }
+
+
 
 }

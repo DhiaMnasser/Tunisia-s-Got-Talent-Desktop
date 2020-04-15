@@ -29,7 +29,7 @@ public class ProgrammeTgt extends Application {
         try {
            
             
-            Parent root = FXMLLoader.load(getClass().getResource("/tgt/Views/main.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/tgt/Views/Base.fxml"));
 //            Parent root = FXMLLoader.load(getClass().getResource("/Achat/Views/AdminCommandes.fxml"));
 
             Scene scene = new Scene(root);
