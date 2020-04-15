@@ -10,8 +10,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="369.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="448.0" prefWidth="369.0" style="-fx-background-color: #3D4956;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AProfileController">
    <children>
+      <Button fx:id="btnDeco" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="85.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#btnDecoAction" prefHeight="127.0" prefWidth="159.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="85.0">
+           
+           
+       
+         <effect>
+            <ImageInput>
+               <source>
+                  
+                         
+                              <Image url="file:/C:/Users/Achraf/Documents/NetBeansProjects/TGT/src/resources/deco1.png" />
+                           
+                        
+                
+               </source>
+            </ImageInput>
+         </effect></Button>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="236.0" prefHeight="18.0" prefWidth="72.0" text="username:" textFill="#ffffff" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -30,22 +46,6 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <Button fx:id="btnDeco" alignment="CENTER" contentDisplay="CENTER" layoutX="2.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#btnDecoAction" prefHeight="51.0" prefWidth="48.0" style="-fx-background-color: red;" AnchorPane.bottomAnchor="397.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="319.0" AnchorPane.topAnchor="0.0">
-           
-           
-       
-         <effect>
-            <ImageInput>
-               <source>
-                  
-                         
-                              <Image url="file:/C:/Users/mohamed%20khrouf/Desktop/TGT-java/TGT2/src/resources/deco1.png" />
-                           
-                        
-                
-               </source>
-            </ImageInput>
-         </effect></Button>
       <Pane layoutX="82.0" layoutY="-131.0" prefHeight="289.0" prefWidth="174.0" rotate="-35.3" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;">
          <children>
                <ImageView fitHeight="177.0" fitWidth="175.0" layoutX="-43.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" rotate="36.5">

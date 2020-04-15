@@ -145,7 +145,7 @@ RegionService s = new RegionService () ;
       }}
     @FXML
     private void retourR(ActionEvent event) throws IOException {
-        Parent uploadPage= FXMLLoader.load(getClass().getResource("MainInterface.fxml"));
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("/UI/MainInterface.fxml"));
 
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(uploadPage, 861, 731));

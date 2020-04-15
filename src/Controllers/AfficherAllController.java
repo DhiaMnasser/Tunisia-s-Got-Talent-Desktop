@@ -237,7 +237,7 @@ EvenementService s = new EvenementService () ;
     }
     @FXML
     private void retour(ActionEvent event) throws IOException {
-        Parent uploadPage= FXMLLoader.load(getClass().getResource("MainInterface.fxml"));
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("/UI/MainInterface.fxml"));
 
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(uploadPage, 861, 731));

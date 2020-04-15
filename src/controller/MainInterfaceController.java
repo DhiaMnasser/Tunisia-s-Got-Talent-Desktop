@@ -54,7 +54,8 @@ public class MainInterfaceController implements Initializable {
 
     @FXML
     private  void region(ActionEvent event) throws IOException {
-        Parent uploadPage= FXMLLoader.load(getClass().getResource("AfficherAllR.fxml"));
+         if(Usercourant.ok.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")){
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("/Controllers/AfficherAllR.fxml"));
 
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 
@@ -69,19 +70,27 @@ public class MainInterfaceController implements Initializable {
         });
 
         stage.setScene(scene);
-        
+         }
     }
 
     @FXML
     private void evenement(ActionEvent event) throws IOException {
-        Parent uploadPage= FXMLLoader.load(getClass().getResource("AfficherAll.fxml"));
+        if(Usercourant.ok.getRoles().equals("a:1:{i:0;s:10:\"ROLE_ADMIN\";}")){
+        Parent uploadPage= FXMLLoader.load(getClass().getResource("/Controllers/AfficherAll.fxml"));
 
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(uploadPage, 861, 731));
         
         
         
-    
+        }
+        else 
+        {
+            Parent uploadPage= FXMLLoader.load(getClass().getResource("/Controllers/interfaceuser.fxml"));
+
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(uploadPage, 861, 731));
+        }
        
     }
 
