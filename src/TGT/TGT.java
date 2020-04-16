@@ -22,8 +22,8 @@ public class TGT {
     public static void main(String[] args) throws SQLException {
         PersonneService ps = new PersonneService();
         Personne p = new Personne("medg", "mohamed.khrouf4@gmail.com","test");
-        
-       
+        ps.ajouterPersonne(p);
+        ps.promote("medg");
   
         try {
             ps.promote("medk");

@@ -65,10 +65,10 @@ public class Code extends Application {
                ps.ajouterPersonne(p);
                Usercourant.ok=p;
                window.close();
-                Stage s = new Stage();
-            User u = new User();
-            u.get(p);
-           u.start(s);
+            
+           Stage s = new Stage();
+             UProfile a =new UProfile();
+           a.start(s);
           
           
           

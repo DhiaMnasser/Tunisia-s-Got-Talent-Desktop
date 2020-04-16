@@ -1,0 +1,5 @@
+[0414/204604.363:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\MOHAME~1\AppData\Local\Temp\scoped_dir20140_1272781866\Crashpad\reports\37e301d3-1c55-49ce-9a80-f27a73d626c9.dmp: Le processus ne peut pas accéder au fichier car ce fichier est utilisé par un autre processus. (0x20)
+[0414/204755.967:ERROR:process_info.cc(359)] UncheckedAllocate
+[0414/204757.135:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: La longueur d’enregistrement d’informations spécifiée ne correspond pas à la longueur nécessaire pour la classe d’informations spécifiée. (0xc0000004)
+[0414/204757.850:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: La longueur d’enregistrement d’informations spécifiée ne correspond pas à la longueur nécessaire pour la classe d’informations spécifiée. (0xc0000004)
+[0414/204757.851:ERROR:process_info.cc(375)] NtQuerySystemInformation SystemExtendedHandleInformation: La longueur d’enregistrement d’informations spécifiée ne correspond pas à la longueur nécessaire pour la classe d’informations spécifiée. (0xc0000004)

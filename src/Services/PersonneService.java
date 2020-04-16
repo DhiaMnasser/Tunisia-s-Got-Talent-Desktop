@@ -110,7 +110,7 @@ public class PersonneService {
 				user = null;
 			}
 		} catch (SQLException e) {
-                    
+                    user=null;
                     System.out.println("username ou mot de passe introuvable");
 		}
 		      

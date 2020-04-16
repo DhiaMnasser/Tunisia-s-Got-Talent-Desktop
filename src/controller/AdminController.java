@@ -19,6 +19,8 @@ import javafx.scene.input.MouseEvent;
 import Entities.Personne;
 import Services.PersonneService;
 import Services.Usercourant;
+import UI.MainInterface;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,46 +31,48 @@ import javax.swing.JOptionPane;
 public class AdminController implements Initializable {
 
     @FXML
-    private TextField txtNome;
+    private TextField txtName;
     @FXML
-    private TextField txtQuantidade;
+    private TextField txtEmail;
     @FXML
-    private TextField txtPreco;
+    private TextField txtPass;
     @FXML
     private TextField txtId;
     @FXML
-    private Button btnNovo;
+    private Button btnNew;
     @FXML
     private Button btnRemover;
     @FXML
-    private Button btnSalvar;
+    private Button btnSaver;
     @FXML
     private TableView<Personne> tableView;
     @FXML
-    private TextField txtPesquisar;
+    private TextField txtRech;
     @FXML
     private Button btnPesquisar;
+     @FXML
+    private Button btnRetour;
     Personne p = new Personne();
     PersonneService ps = new PersonneService();
     List<Personne> list = new ArrayList();
     ObservableList<Personne> pList = FXCollections.observableArrayList();
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {        criarColuna();
+   public void initialize(URL url, ResourceBundle rb) {        createColomn();
 
-        atualizarTableView();
+       atualiser();
     }
 
     @FXML
-    private void btnSalvarAction(ActionEvent event) {
-        if((txtNome!=null) && (txtQuantidade!=null) && (txtPreco!=null)){
-            Personne p = new Personne(txtNome.getText(),txtQuantidade.getText(),txtPreco.getText()); 
+    private void btnSaveAction(ActionEvent event) {
+        if((txtName!=null) && (txtEmail!=null) && (txtPass!=null)){
+            Personne p = new Personne(txtName.getText(),txtEmail.getText(),txtPass.getText()); 
            
         
         
          ps.ajouterPersonne(p);
-            limparCampos();
-            atualizarTableView();
+            setNull();
+            atualiser();
             System.out.println("ajout");
           
            
@@ -84,28 +88,29 @@ public class AdminController implements Initializable {
    
 
     @FXML
-    private void btnNovoAction(ActionEvent event) {
-        limparCampos();
+    private void btnNewAction(ActionEvent event) {
+       setNull();
     }
 
     @FXML
     private void btnRemoverAction(ActionEvent event) {
         ps.remove(p);
-        limparCampos();
-        atualizarTableView();
+        setNull();
+        atualiser();
     }
 
     @FXML
-    private void btnPesquisarAction(ActionEvent event) {
-       pesquisarTable(txtPesquisar.getText());
+    private void btnRechercheAction(ActionEvent event) {
+        rechercheTable(txtRech.getText());
+        
     }
 
     @FXML
-    private void atualizarFormularioRelease(MouseEvent event) {
-        setFormulario();
+    private void actualiserFormulaire(MouseEvent event) {
+        setFormulaire();
     }
 
-    public void criarColuna() {
+    public void createColomn() {
         TableColumn<Personne, Integer> tcId = new TableColumn("ID");
         TableColumn<Personne, String> tcNome = new TableColumn("Name");
         TableColumn<Personne, Integer> tcQuantidade = new TableColumn("Email");
@@ -113,7 +118,7 @@ public class AdminController implements Initializable {
 
         tableView.getColumns().addAll(tcId, tcNome, tcQuantidade, tcPreco);
 
-        tcId.setCellValueFactory(new PropertyValueFactory<>("id"));
+       tcId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcNome.setCellValueFactory(new PropertyValueFactory<>("username"));
         tcQuantidade.setCellValueFactory(new PropertyValueFactory<>("email"));
         tcPreco.setCellValueFactory(new PropertyValueFactory<>("password"));
@@ -124,55 +129,62 @@ public class AdminController implements Initializable {
         tcQuantidade.prefWidthProperty().bind(tableView.prefWidthProperty().multiply(0.15));
         tcPreco.prefWidthProperty().bind(tableView.prefWidthProperty().multiply(0.2));
 
-        for (Personne p : ps.getAllPersonnes()) {
-            if(!(p.getUsername().equals(Usercourant.ok.getUsername()))){
-            pList.add(p);
+        for (Personne per : ps.getAllPersonnes()) {
+            if(!(per.getUsername().equals(Usercourant.ok.getUsername()))){
+            pList.add(per);
             tableView.setItems(pList);
             }
         }
     }
 
-    public void atualizarTableView() {
+    public void atualiser() {
 
         tableView.getItems().clear();
 
-       for (Personne p : ps.getAllPersonnes()) {
-            if(!(p.getUsername().equals(Usercourant.ok.getUsername()))){
-            pList.add(p);
+       for (Personne per : ps.getAllPersonnes()) {
+            if(!(per.getUsername().equals(Usercourant.ok.getUsername()))){
+            pList.add(per);
             tableView.setItems(pList);
             }
         }
     }
-    public void pesquisarTable(String desc) {
+    public void rechercheTable(String desc) {
 
         tableView.getItems().clear();
 
-        for (Personne p : ps.readPesquisar(desc)) {
-              if(!(p.getUsername().equals(Usercourant.ok.getUsername()))){
-            pList.add(p);
+        for (Personne per : ps.readPesquisar(desc)) {
+              if(!(per.getUsername().equals(Usercourant.ok.getUsername()))){
+            pList.add(per);
             tableView.setItems(pList);
               }
         }
     }
 
-    public void setFormulario() {
+    public void setFormulaire() {
 
         p = tableView.getSelectionModel().getSelectedItem();
         txtId.setText(String.valueOf(p.getId()));
-        txtNome.setText(p.getUsername());
-        txtQuantidade.setText(String.valueOf(p.getEmail()));
-        txtPreco.setText(p.getPassword());
+        txtName.setText(p.getUsername());
+        txtEmail.setText(String.valueOf(p.getEmail()));
+        txtPass.setText(p.getPassword());
 
     }
 
-    public void limparCampos() {
+    public void setNull() {
         p = null;
         txtId.setText(null);
-        txtNome.setText(null);
-        txtQuantidade.setText(null);
-        txtPreco.setText(null);
+        txtName.setText(null);
+        txtEmail.setText(null);
+        txtPass.setText(null);
     }
-
+    
+ @FXML
+    private void btnRetourAction(ActionEvent event) {
+         Stage stage = (Stage) btnRetour.getScene().getWindow();
+                stage.close();
+                MainInterface m = new MainInterface();
+                m.start(stage);
+    }
 }
   
 
