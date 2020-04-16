@@ -6,7 +6,10 @@
 package Controllers;
 
 import Entities.Evenement;
+import Entities.Personne;
 import Services.EvenementService;
+import Services.PersonneService;
+import Services.Usercourant;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -28,6 +31,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -40,7 +44,7 @@ import javafx.stage.Stage;
 public class InterfaceuserController implements Initializable {
 
     @FXML
-    private ImageView image;
+    private ImageView img;
     @FXML
     private TableView<Evenement> Evenement;
     @FXML
@@ -107,11 +111,29 @@ EvenementService s = new EvenementService () ;
     }    
 
     @FXML
-    private void ajouterevent(ActionEvent event) throws IOException {
-        Parent uploadPage= FXMLLoader.load(getClass().getResource(""));
-
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(uploadPage, 861, 731));
+    private void ajouterevent(ActionEvent event) throws IOException,SQLException {
+        
+        Evenement c  = new Evenement();
+          Evenement c2 = Evenement.getSelectionModel().getSelectedItem();
+            int id_ev = c2.getId();
+        
+        Image image = new Image(c2.getImage());//wamp64\\www\\BitDevTGT\\web\\"+selectedid.getUrl());
+        img.setImage(image);
+        javafx.scene.image.ImageView Img= new javafx.scene.image.ImageView(image);
+    
+    }
+    @FXML
+    private void inscrire(ActionEvent event) throws IOException,SQLException {
+        
+        Evenement c  = new Evenement();
+          Evenement c2 = Evenement.getSelectionModel().getSelectedItem();
+            int id_ev = c2.getId();
+        String s = c2.getNomevent();
+        
+        PersonneService ps = new PersonneService();
+        
+        ps.modifierevent(Usercourant.ok.getId(), id_ev);
+    new Alert(Alert.AlertType.INFORMATION, "Inscription à lévénement "+c2.getNomevent() +" prise en considération !").show();
     }
 
     @FXML

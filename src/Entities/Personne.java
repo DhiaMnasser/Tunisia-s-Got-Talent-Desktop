@@ -32,6 +32,18 @@ public class Personne {
      private String confirmation_token;
      private Timestamp password_requested_at;
      private String roles;
+     private int event_id ;
+  public Personne (int event_id)
+  {
+      this.event_id=event_id;
+  }
+    public int getEvent_id() {
+        return event_id;
+    }
+
+    public void setEvent_id(int event_id) {
+        this.event_id = event_id;
+    }
      
 
     public Personne(String username, String email, String password)  {

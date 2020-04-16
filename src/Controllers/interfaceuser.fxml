@@ -39,12 +39,13 @@
       </Button>
       <TextField id="rechercher" fx:id="rechercher" layoutX="382.0" layoutY="497.0" onAction="#rechercherevent" promptText="rechercher" />
       <Button fx:id="search" layoutX="566.0" layoutY="497.0" mnemonicParsing="false" onAction="#rechercherevent" text="Rechercher" />
-      <ImageView fitHeight="166.0" fitWidth="157.0" layoutX="707.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img" fitHeight="166.0" fitWidth="157.0" layoutX="707.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" />
       <TableView id="tablesearch" fx:id="tablesearch" layoutX="691.0" layoutY="507.0" prefHeight="25.0" prefWidth="149.0">
          <columns>
             <TableColumn id="nomsearch" fx:id="nomsearch" prefWidth="75.0" text="Nom" />
             <TableColumn id="etatsearch" fx:id="etatsearch" prefWidth="75.0" text="Etat" />
          </columns>
       </TableView>
+      <Button fx:id="inscri" layoutX="760.0" layoutY="335.0" onAction="#inscrire" mnemonicParsing="false" text="S'inscrire" />
    </children>
 </AnchorPane>

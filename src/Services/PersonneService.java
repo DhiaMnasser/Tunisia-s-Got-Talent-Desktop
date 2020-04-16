@@ -144,6 +144,28 @@ public void remove(Personne p) {
                   System.out.println("erreur");
           } 
     }
+ public void modifierevent(int user_id ,int event_id) throws SQLException {
+        /*  String requette2="update fos_user set event_id=3 where id=5";
+     
+         
+              try {  PreparedStatement pst2 = connexion.prepareStatement(requette2);
+               
+      pst2.setInt(1,event_id);
+      
+
+        
+      pst2.executeUpdate();
+      System.out.println("modification reussie");
+          } catch (SQLException ex) {
+                  System.out.println("erreur");
+          } */
+        String req = "UPDATE `fos_user` SET  event_id='"+event_id
+                               
+                               
+                               + "' WHERE id="+user_id;
+        Statement pstm = connexion.createStatement();
+       pstm.executeUpdate(req);
+    }
   public void modifier(Personne p) {
           String requette2="update fos_user set username=?,username_canonical=?,email=?,email_canonical=?,enabled=?,salt=?,password=?,last_login=?,confirmation_token=?,password_requested_at=?,roles=? where id="+p.getId();
      
