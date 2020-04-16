@@ -95,7 +95,7 @@ public class AddCategorieController implements Initializable {
     @FXML
     private void back(ActionEvent event) throws IOException,SQLException {
        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/tgt/Views/main.fxml")) ;
+        loader.setLocation(getClass().getResource("/tgt/Views/base.fxml")) ;
         Parent root = loader.load();
         Scene ascene = new Scene(root);
         Stage astage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -117,7 +117,7 @@ public class AddCategorieController implements Initializable {
     @FXML
     private void home(ActionEvent event) throws IOException,SQLException {
        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/Stock/Graphique/main.fxml")) ;
+        loader.setLocation(getClass().getResource("/tgt/Views/AdminMain.fxml")) ;
         Parent root = loader.load();
         Scene ascene = new Scene(root);
         Stage astage = (Stage) ((Node) event.getSource()).getScene().getWindow();
