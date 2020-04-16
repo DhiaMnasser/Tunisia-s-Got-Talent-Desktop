@@ -93,16 +93,15 @@ public class TGT extends Application{
      */
     public static void main(String[] args) throws SQLException, IOException {
         // TODO code application logic here
-      /*Runtime runtime = Runtime.getRuntime();
-         String[] cmd={"cmd.exe","/C start cmd.exe"};
-         Process p = runtime.exec(cmd,null,null );
-         String[] cmd4={"cmd.exe","/C ","ipconfig "};
-            Process p4 = runtime.exec(cmd4,null,null );*/
+     /* Runtime runtime = Runtime.getRuntime();
+         String[] cmd={"cmd.exe","/c"," start cmd.exe"};
+         Process p = runtime.exec(cmd,null,null );*/
+         
        
                     
                     
-           String s = windowsIpConfig();
-           System.out.println(s);
+          /* String s = windowsIpConfig();
+           System.out.println(s);*/
        // Evenement e = new Evenement("Achraf", "Chourabi","Tunis","img");
        // Region r = new Region("achraf",21);
        // RegionService rs = new RegionService();
