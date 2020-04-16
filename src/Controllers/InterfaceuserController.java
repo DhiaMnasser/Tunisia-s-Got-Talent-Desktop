@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +30,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,13 +46,18 @@ import javafx.stage.Stage;
  * @author Achraf
  */
 public class InterfaceuserController implements Initializable {
-
+@FXML
+    private Label stat;
     @FXML
     private ImageView img;
     @FXML
     private TableView<Evenement> Evenement;
     @FXML
+    private TableView<Personne> personne;
+    @FXML
     private TableColumn<Evenement, String> nomevent;
+    @FXML
+    private TableColumn<Personne, String> part;
     @FXML
     private TableColumn<Evenement, String> Duree;
     
@@ -78,7 +87,8 @@ EvenementService s = new EvenementService () ;
     private TableColumn<?, ?> nomsearch;
     @FXML
     private TableColumn<?, ?> etatsearch;
-
+public ObservableList<Personne> datapersonne = FXCollections.observableArrayList();
+PersonneService p = new PersonneService () ;
     /**
      * Initializes the controller class.
      */
@@ -135,7 +145,38 @@ EvenementService s = new EvenementService () ;
         ps.modifierevent(Usercourant.ok.getId(), id_ev);
     new Alert(Alert.AlertType.INFORMATION, "Inscription à lévénement "+c2.getNomevent() +" prise en considération !").show();
     }
+@FXML
+    void selection() throws SQLException {
+     
+        Evenement selected = Evenement.getSelectionModel().getSelectedItem();
+          if (!Evenement.getSelectionModel().getSelectedItems().isEmpty()) {
+        
+        part.setCellValueFactory(new PropertyValueFactory<>("username"));
+       
+        datapersonne = p.indexAction(selected.getId());
+            
+            personne.setItems(datapersonne);
+            stat.setText(String.valueOf(p.stat(selected.getId()))+" Participants");
+            
+            
+            
+        
+        //nomevent.setText(selected.getNomevent());
+        
+         
 
+        
+        
+        
+        
+          } else {
+              Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Information Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("aucun élément 'a ètè séléctionné");
+            alert.showAndWait();
+          }
+    }
     @FXML
     private void retour(ActionEvent event) throws IOException {
         Parent uploadPage= FXMLLoader.load(getClass().getResource("/UI/MainInterface.fxml"));

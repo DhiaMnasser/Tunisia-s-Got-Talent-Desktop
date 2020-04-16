@@ -5,6 +5,7 @@
  */
 package Services;
 import Entities.BCrypt;
+import Entities.Evenement;
 import Entities.Personne;
 import tgt.MyDbConnection;
 import java.sql.Connection;
@@ -21,6 +22,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest; 
 import java.security.NoSuchAlgorithmException; 
 import java.util.Scanner;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class PersonneService {
@@ -334,5 +337,39 @@ public void disable(String username){
         }
         return users;
     }
+ public ObservableList<Personne> indexAction(int id ) throws SQLException 
+     { 
+        ObservableList<Personne> persons=FXCollections.observableArrayList();
+        String req= "  select username from fos_user where event_id= '"+id+"'";
+        Statement st;
+        
+            st=connexion.createStatement();
+            ResultSet result=st.executeQuery(req);
+            while(result.next())
+            {    Personne p = new Personne(result.getString("username") );
+            persons.add(p);
+                    }
+        
+          return  persons;
+        
+        
+     }
+ public int stat(int id ) throws SQLException 
+     { 
+        ObservableList<Personne> persons=FXCollections.observableArrayList();
+        String req= "  select count(*) from fos_user where event_id= '"+id+"'";
+        Statement st;
+        
+            st=connexion.createStatement();
+            ResultSet result=st.executeQuery(req);
+            while(result.next())
+            {    int a =result.getInt(1);
+            return  a;
+                    }
+        
+          return 0 ;
+        
+        
+     }
 }
 

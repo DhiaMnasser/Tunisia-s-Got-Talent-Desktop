@@ -37,6 +37,10 @@ public class Personne {
   {
       this.event_id=event_id;
   }
+  public Personne (String username)
+  {
+      this.username=username;
+  }
     public int getEvent_id() {
         return event_id;
     }
