@@ -13,6 +13,10 @@ import Services.Usercourant;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +52,8 @@ import javafx.stage.Stage;
 public class InterfaceuserController implements Initializable {
 @FXML
     private Label stat;
+@FXML
+    private Button inscri;
     @FXML
     private ImageView img;
     @FXML
@@ -134,16 +140,26 @@ PersonneService p = new PersonneService () ;
     }
     @FXML
     private void inscrire(ActionEvent event) throws IOException,SQLException {
-        
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+           
+          
+          
         Evenement c  = new Evenement();
           Evenement c2 = Evenement.getSelectionModel().getSelectedItem();
             int id_ev = c2.getId();
+            if (c2.getDate_f().compareTo(date)<0)
+           {
+                inscri.setDisable(false);
+                new Alert(Alert.AlertType.INFORMATION, "Evenement terminé , pas d'inscription possible").show();
+           } else
+            {
         String s = c2.getNomevent();
         
         PersonneService ps = new PersonneService();
         
         ps.modifierevent(Usercourant.ok.getId(), id_ev);
     new Alert(Alert.AlertType.INFORMATION, "Inscription à lévénement "+c2.getNomevent() +" prise en considération !").show();
+            }
     }
 @FXML
     void selection() throws SQLException {
@@ -157,6 +173,7 @@ PersonneService p = new PersonneService () ;
             
             personne.setItems(datapersonne);
             stat.setText(String.valueOf(p.stat(selected.getId()))+" Participants");
+            
             
             
             

@@ -11,8 +11,10 @@ import Entities.Personne;
 import Entities.Region;
 import Services.EvenementService;
 import Services.RegionService;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -43,6 +45,7 @@ public class TGT extends Application{
             stage.show();
             PersonneService ps = new PersonneService() ;
         Personne p = new Personne("test", "test@gmail.com","test");
+         
        // ps.ajouterPersonne(p);
        // ps.promote("achraf");
         /*Button btn = new Button();
@@ -71,12 +74,35 @@ public class TGT extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();*/
         }
+    public static String windowsIpConfig() throws IOException {
+        String path = "C:\\Users\\Achraf\\Documents\\NetBeansProjects\\TGT\\GMapsFX\\GMapsFX\\" ;
+        String[] commande = {"cmd.exe",path,"mvn java:exec"};
+        
+            Process p = Runtime.getRuntime().exec(commande);
+    Scanner sc = new Scanner(p.getInputStream());
+    StringBuilder buffer = new StringBuilder();
+    while(sc.hasNext())
+        
+        buffer.append(sc.nextLine());
+    sc.close();
+    return buffer.toString();}
+    
+   
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         // TODO code application logic here
-      
+      /*Runtime runtime = Runtime.getRuntime();
+         String[] cmd={"cmd.exe","/C start cmd.exe"};
+         Process p = runtime.exec(cmd,null,null );
+         String[] cmd4={"cmd.exe","/C ","ipconfig "};
+            Process p4 = runtime.exec(cmd4,null,null );*/
+       
+                    
+                    
+           String s = windowsIpConfig();
+           System.out.println(s);
        // Evenement e = new Evenement("Achraf", "Chourabi","Tunis","img");
        // Region r = new Region("achraf",21);
        // RegionService rs = new RegionService();

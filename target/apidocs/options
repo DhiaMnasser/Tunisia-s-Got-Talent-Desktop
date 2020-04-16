@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/Achraf/.m2/repository/org/slf4j/slf4j-api/1.7.23/slf4j-api-1.7.23.jar;C:/Users/Achraf/.m2/repository/ch/qos/logback/logback-classic/1.2.1/logback-classic-1.2.1.jar;C:/Users/Achraf/.m2/repository/ch/qos/logback/logback-core/1.2.1/logback-core-1.2.1.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'C:/Users/Achraf/Desktop/Nouveau dossier/GMapsFX/GMapsFX/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2020. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Achraf/Desktop/Nouveau dossier/GMapsFX/GMapsFX/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'GMapsFX 2.12.2-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' 'C:/Users/Achraf/Desktop/Nouveau dossier/GMapsFX/GMapsFX/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'GMapsFX 2.12.2-SNAPSHOT API'
